@@ -1,78 +1,43 @@
-<template>
-  <div class="container">
-    <div>
-      <Logo />
-      <h1 class="title">
-        hurma
-      </h1>
-      <div class="links">
-        <a
-          href="https://nuxtjs.org/"
-          target="_blank"
-          rel="noopener noreferrer"
-          class="button--green"
-        >
-          Documentation
-        </a>
-        <a
-          href="https://github.com/nuxt/nuxt.js"
-          target="_blank"
-          rel="noopener noreferrer"
-          class="button--grey"
-        >
-          GitHub
-        </a>
-      </div>
-    </div>
-  </div>
+<template lang='pug'>
+.w-full
+  welcome-board
+  .banner-area
+    img.banner-area__image(src="~/assets/hurma-banner.png")
+    img.banner-area__image(src="~/assets/kargo-banner.png")
+  .flex.flex-col.mt-12
+    .text-4xl.font-bold.text-center Tüm Hurma Çeşitleri
+    .flex.flex-wrap.m-4
+      product-card.mr-2.mb-2(
+        v-for="(product, index) in products",
+        :key="product.id",
+        :name="product.name",
+        :price="product.price",
+        :imageLink="product.picture && product.picture.fields.file.url",
+        :discount="product.discount",
+        @addToBasket="$store.commit('addToBasket', product)"
+      )
 </template>
 
 <script>
-export default {}
+import { mapState } from "vuex";
+import WelcomeBoard from "../components/WelcomeBoard";
+export default {
+  name: "Home",
+  components: {
+    WelcomeBoard,
+  },
+  computed: {
+    ...mapState(["products", "basket"]),
+  },
+  async created() {
+    await this.$store.dispatch("fetchProducts");
+  },
+};
 </script>
 
-<style>
-/* Sample `apply` at-rules with Tailwind CSS
-.container {
-@apply min-h-screen flex justify-center items-center text-center mx-auto;
-}
-*/
-.container {
-  margin: 0 auto;
-  min-height: 100vh;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  text-align: center;
-}
-
-.title {
-  font-family:
-    'Quicksand',
-    'Source Sans Pro',
-    -apple-system,
-    BlinkMacSystemFont,
-    'Segoe UI',
-    Roboto,
-    'Helvetica Neue',
-    Arial,
-    sans-serif;
-  display: block;
-  font-weight: 300;
-  font-size: 100px;
-  color: #35495e;
-  letter-spacing: 1px;
-}
-
-.subtitle {
-  font-weight: 300;
-  font-size: 42px;
-  color: #526488;
-  word-spacing: 5px;
-  padding-bottom: 15px;
-}
-
-.links {
-  padding-top: 15px;
-}
+<style lang="sass" scoped>
+.banner-area
+  @apply flex flex-row w-full mt-4 justify-center flex-wrap
+  &__image
+    @apply cursor-pointer mx-2 mt-2
 </style>

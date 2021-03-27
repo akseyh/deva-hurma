@@ -1,62 +1,62 @@
-<template>
-  <div>
-    <Nuxt />
-  </div>
+<template lang='pug'>
+.default-layout
+  .basket-fixed(v-if="basket.length")
+    span {{ 'There are ' + basket.length + ' items in the basket.' }}
+    .basket-fixed__basket-icon
+      shopping-card-icon
+  .default-layout__fixed-top
+    information-section
+  .default-layout__app-container
+    header-menu.default-layout__header
+    Nuxt.default-layout__app
+  .default-layout__footer
+    footer-section
 </template>
 
-<style>
-html {
-  font-family:
-    'Source Sans Pro',
-    -apple-system,
-    BlinkMacSystemFont,
-    'Segoe UI',
-    Roboto,
-    'Helvetica Neue',
-    Arial,
-    sans-serif;
-  font-size: 16px;
-  word-spacing: 1px;
-  -ms-text-size-adjust: 100%;
-  -webkit-text-size-adjust: 100%;
-  -moz-osx-font-smoothing: grayscale;
-  -webkit-font-smoothing: antialiased;
-  box-sizing: border-box;
-}
+<script>
+import ShoppingCardIcon from "~/assets/icons/ShoppingCartIcon";
+import { mapState } from "vuex";
+export default {
+  name: "DefaultLayout",
+  components: { ShoppingCardIcon },
+  computed: {
+    ...mapState(["basket"]),
+  },
+};
+</script>
+
+<style lang='sass'>
+.default-layout
+  @apply w-full
+  &__fixed-top
+    @apply w-full
+  &__header
+    @apply mt-4
+  &__app-container
+    @apply w-full md:w-3/4 mx-auto mt-8
+  &__app
+    @apply mt-4
+  &__footer
+    @apply w-full mt-4
+
+.basket-fixed
+  @apply sm:right-10 sm:bottom-10 sm:w-96 sm:rounded fixed bottom-0 bg-gray-100 w-full h-20 p-4 flex justify-between items-center border-t-2 border-green-500
+  &__basket-icon
+    @apply bg-green-500 p-2 rounded-xl text-white cursor-pointer
+
+html
+  font-family: "Source Sans Pro", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif
+  font-size: 16px
+  word-spacing: 1px
+  -ms-text-size-adjust: 100%
+  -webkit-text-size-adjust: 100%
+  -moz-osx-font-smoothing: grayscale
+  -webkit-font-smoothing: antialiased
+  box-sizing: border-box
 
 *,
 *::before,
-*::after {
-  box-sizing: border-box;
-  margin: 0;
-}
-
-.button--green {
-  display: inline-block;
-  border-radius: 4px;
-  border: 1px solid #3b8070;
-  color: #3b8070;
-  text-decoration: none;
-  padding: 10px 30px;
-}
-
-.button--green:hover {
-  color: #fff;
-  background-color: #3b8070;
-}
-
-.button--grey {
-  display: inline-block;
-  border-radius: 4px;
-  border: 1px solid #35495e;
-  color: #35495e;
-  text-decoration: none;
-  padding: 10px 30px;
-  margin-left: 15px;
-}
-
-.button--grey:hover {
-  color: #fff;
-  background-color: #35495e;
-}
+*::after
+  box-sizing: border-box
+  margin: 0
 </style>

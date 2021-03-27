@@ -1,0 +1,57 @@
+<template lang="pug">
+.product-card
+  img.product-card__picture(:src="'https:' + imageLink")
+  .product-card__name {{ name }}
+  .product-card__price
+    .product-card__discount-text(
+      :class="discount ? 'product-card__discount-text--has' : 'product-card__discount-text--not'"
+    ) {{ discount + '₺' }}
+    .product-card__price-text(
+      :class="discount ? 'product-card__price-text--has' : 'product-card__price-text--not'"
+    ) {{ price + '₺' }}
+  button.product-card__add-button(@click="$emit('addToBasket')") Sepete Ekle
+</template>
+
+<script>
+export default {
+  name: "ProductCard",
+  props: {
+    name: String,
+    price: Number,
+    discount: Number,
+    imageLink: {
+      type: String,
+      default:
+        "//piotrkowalski.pw/assets/camaleon_cms/image-not-found-4a963b95bf081c3ea02923dceaeb3f8085e1a654fc54840aac61a57a60903fef.png",
+    },
+  },
+};
+</script>
+
+<style lang="sass" scoped>
+.product-card
+  @apply w-40 h-72 p-4 bg-gray-100 rounded-xl
+  &__picture
+    @apply w-32 h-28 rounded-xl bg-gray-200 bg-contain bg-no-repeat bg-center
+  &__name
+    @apply font-bold mt-2 text-green-600 text-xl
+  &__price
+    @apply flex items-end justify-start
+  &__price-text
+    @apply font-thin
+    &--has
+      @apply text-xl line-through text-red-600
+    &--not
+      @apply text-3xl
+  &__discount-text
+    @apply font-thin text-3xl mr-4
+    &--has
+      @apply block
+    &--not
+      @apply hidden
+  &__add-button
+    border: 1px solid gray
+    @apply w-full mt-4 rounded-xl p-2 text-gray-400 hover:text-green-600 transition
+  &__add-button:hover
+    border: 1px solid green
+</style>
