@@ -23,6 +23,10 @@ export default {
       type: String,
       default:
         "//piotrkowalski.pw/assets/camaleon_cms/image-not-found-4a963b95bf081c3ea02923dceaeb3f8085e1a654fc54840aac61a57a60903fef.png",
+      validator: function (value) {
+        console.log(value);
+        return true;
+      },
     },
   },
 };
@@ -30,11 +34,11 @@ export default {
 
 <style lang="sass" scoped>
 .product-card
-  @apply w-40 h-72 p-4 bg-gray-100 rounded-xl
+  @apply w-40 h-auto p-4 bg-gray-100 rounded-xl flex flex-col justify-between
   &__picture
     @apply w-32 h-28 rounded-xl bg-gray-200 bg-contain bg-no-repeat bg-center
   &__name
-    @apply font-bold mt-2 text-green-600 text-xl
+    @apply font-bold mt-2 text-green-600 text-lg break-words
   &__price
     @apply flex items-end justify-start
   &__price-text
@@ -51,7 +55,7 @@ export default {
       @apply hidden
   &__add-button
     border: 1px solid gray
-    @apply w-full mt-4 rounded-xl p-2 text-gray-400 hover:text-green-600 transition
+    @apply w-full rounded-xl p-2 text-gray-400 hover:text-green-600 transition
   &__add-button:hover
     border: 1px solid green
 </style>
