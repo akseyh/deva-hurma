@@ -1,6 +1,6 @@
 export const state = {
     products: [],
-    basket: []
+    basket: {}
 }
 
 export const mutations = {
@@ -8,10 +8,21 @@ export const mutations = {
         state.products = val
     },
     addToBasket(state, product) {
-        state.basket = [
-            ...state.basket,
-            product
-        ]
+        if (!!state.basket[product.name]) {
+            state.basket = {
+                ...state.basket,
+                [product.name]: state.basket[product.name] + 1
+            }
+        } else {
+            state.basket = {
+                ...state.basket,
+                [product.name]: 1
+            }
+        }
+        // state.basket = [
+        //     ...state.basket,
+        //     product
+        // ]
     }
 }
 
@@ -36,4 +47,20 @@ export const actions = {
     }
 }
 
-export const getters = {}
+export const getters = {
+    basketProducts(state) {
+        const products = state.products
+        const basket = state.basket
+        return products.filter(el => Object.keys(basket).includes(el.name))
+    },
+    basketTotal(state) {
+        const products = state.products
+        const basket = state.basket
+        return Object.keys(basket)
+            .reduce((total, el) => {
+                const product = products.find(product => product.name === el)
+                const price = product.discount || product.price
+                return total + (price * basket[el])
+            }, 0)
+    }
+}

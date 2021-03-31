@@ -6,7 +6,7 @@
     img.banner-area__image(src="~/assets/kargo-banner.png")
   .flex.flex-col.mt-12
     .text-4xl.font-bold.text-center Tüm Hurma Çeşitleri
-    .flex.flex-wrap.m-4
+    .flex.flex-wrap.m-4.justify-center
       product-card.mr-2.mb-2(
         v-for="(product, index) in computedProducts",
         :key="product.id",

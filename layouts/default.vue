@@ -1,9 +1,6 @@
 <template lang='pug'>
 .default-layout
-  .basket-fixed(v-if="basket.length")
-    span {{ 'There are ' + basket.length + ' items in the basket.' }}
-    .basket-fixed__basket-icon
-      shopping-card-icon
+  basket
   .default-layout__fixed-top
     information-section
   .default-layout__app-container
@@ -14,14 +11,8 @@
 </template>
 
 <script>
-import ShoppingCardIcon from "~/assets/icons/ShoppingCartIcon";
-import { mapState } from "vuex";
 export default {
   name: "DefaultLayout",
-  components: { ShoppingCardIcon },
-  computed: {
-    ...mapState(["basket"]),
-  },
 };
 </script>
 
@@ -38,11 +29,6 @@ export default {
     @apply mt-4
   &__footer
     @apply w-full mt-4
-
-.basket-fixed
-  @apply sm:right-10 sm:bottom-10 sm:w-96 sm:rounded fixed bottom-0 bg-gray-100 w-full h-20 p-4 flex justify-between items-center border-t-2 border-green-500
-  &__basket-icon
-    @apply bg-green-500 p-2 rounded-xl text-white cursor-pointer
 
 html
   font-family: "Source Sans Pro", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif
