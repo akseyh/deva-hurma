@@ -12,7 +12,7 @@
       b.text-base Sadık Yılmaz
       b.flex.items-center.space-x-2
         PhoneIcon.w-4.text-green-500
-        span.text-sm 0(534) 487 26 73
+        span.text-sm 0(533) 487 26 73
     .header-menu__basket-title(@click="$router.push('/basket')")
       ShoppingCardIcon.w-4
       span Sepet
