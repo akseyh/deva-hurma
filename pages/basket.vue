@@ -20,7 +20,7 @@ div
     b.text-xl Toplam Tutar: {{ basketTotal }}TL
     button.bg-green-600.text-white.p-2.rounded-md.w-52(
       @click="$store.dispatch('makeOrder', { name })"
-    ) Sipariş Ver
+    ) Sipariş Ve
 </template>
 
 <script>
