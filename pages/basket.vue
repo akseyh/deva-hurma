@@ -33,7 +33,7 @@ export default {
   },
   data() {
     return {
-      name: "",
+      name: "Your name",
     };
   },
 };
