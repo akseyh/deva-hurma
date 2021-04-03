@@ -1,7 +1,7 @@
 <template lang="pug">
-.basket-fixed(v-if="true")
+.basket-fixed(v-if="basket.length && $route.path !== '/basket'")
   .basket-fixed__content
-    span {{ 'Sepetinizde ' + basketProducts.length + ' ürün var.' }}
+    span {{ 'Sepetinizde ' + basket.length + ' ürün var.' }}
     span Toplam:&nbsp
       b {{ basketTotal + 'TL' }}
   button.basket-fixed__basket-icon(@click="$router.push('/basket')")
@@ -16,7 +16,7 @@ export default {
   components: { ShoppingCardIcon },
   computed: {
     ...mapState(["basket"]),
-    ...mapGetters(["basketTotal", "basketProducts"]),
+    ...mapGetters(["basketTotal"]),
   },
 };
 </script>

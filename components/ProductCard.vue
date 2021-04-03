@@ -9,10 +9,22 @@
     .product-card__price-text(
       :class="discount ? 'product-card__price-text--has' : 'product-card__price-text--not'"
     ) {{ price + '₺' }}
-  button.product-card__add-button(@click="$emit('addToBasket')") Sepete Ekle
+  button.product-card__add-button(
+    @click="$emit('addToBasket')",
+    v-if="!productInBasket"
+  ) Sepete Ekle
+  .flex.justify-between(v-else)
+    button.bg-gray-500.w-8.text-white(
+      @click="$store.commit('removeToBasket', name)"
+    ) -
+    span {{ productInBasket.piece }}
+    button.bg-gray-500.w-8.text-white(
+      @click="$store.commit('addToBasket', { name, price, discount, imageLink })"
+    ) +
 </template>
 
 <script>
+import { mapState } from "vuex";
 export default {
   name: "ProductCard",
   props: {
@@ -23,6 +35,12 @@ export default {
       type: String,
       default:
         "//piotrkowalski.pw/assets/camaleon_cms/image-not-found-4a963b95bf081c3ea02923dceaeb3f8085e1a654fc54840aac61a57a60903fef.png",
+    },
+  },
+  computed: {
+    ...mapState(["basket"]),
+    productInBasket() {
+      return this.basket.find((el) => el.name === this.name && el.piece > 0);
     },
   },
 };

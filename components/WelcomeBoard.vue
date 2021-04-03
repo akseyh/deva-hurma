@@ -13,7 +13,7 @@
     background: url('~assets/hurma.jpeg')
     @apply w-full relative flex flex-col bg-no-repeat bg-right-top
     &__description
-        @apply w-full sm:w-min p-24 z-20 flex flex-col bg-white bg-opacity-60
+        @apply w-full sm:w-min p-24 z-20 flex flex-col bg-white bg-opacity-40
     &__title
         @apply font-bold text-green-400
     &__subtitle

@@ -1,20 +1,20 @@
 <template lang="pug">
 .header-menu
   .header-menu__left
-    img.header-menu__logo(src="~/assets/logo.png")
+    img.header-menu__logo(src="~/assets/logo.png", @click="$router.push('/')")
     .header-menu__links
       NuxtLink.header-menu__link(to="/") Anasayfa
       NuxtLink.header-menu__link(to="/products") Hurma
       NuxtLink.header-menu__link(to="#") Sipariş Ver
       NuxtLink.header-menu__link(to="#") İletişim
   .flex.space-x-8
-    .header-menu__contact
-      b.text-xl Sadık Yılmaz
-      b.flex
-        PhoneIcon.w-6.text-green-500
-        span 0(534) 487 26 73
+    .header-menu__contact.mr-4
+      b.text-base Sadık Yılmaz
+      b.flex.items-center.space-x-2
+        PhoneIcon.w-4.text-green-500
+        span.text-sm 0(534) 487 26 73
     .header-menu__basket-title(@click="$router.push('/basket')")
-      ShoppingCardIcon
+      ShoppingCardIcon.w-4
       span Sepet
 </template>
 
@@ -37,7 +37,7 @@ export default {
   &__left
     @apply flex
   &__logo
-    @apply h-12
+    @apply h-12 sm:h-20
   &__links
     @apply flex-grow sm:flex items-center px-4 space-x-8 hidden
   &__link

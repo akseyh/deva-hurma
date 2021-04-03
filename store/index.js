@@ -1,6 +1,8 @@
+const axios = require('axios')
+
 export const state = {
     products: [],
-    basket: {}
+    basket: []
 }
 
 export const mutations = {
@@ -8,21 +10,37 @@ export const mutations = {
         state.products = val
     },
     addToBasket(state, product) {
-        if (!!state.basket[product.name]) {
-            state.basket = {
-                ...state.basket,
-                [product.name]: state.basket[product.name] + 1
-            }
+        const hasProductInBasket = state.basket.find(el => el.name === product.name)
+        if (hasProductInBasket) {
+            state.basket = state.basket.map(el => {
+                if (el.name === product.name) {
+                    return {
+                        ...el,
+                        piece: el.piece + 1
+                    }
+                } else return el
+            })
         } else {
-            state.basket = {
+            state.basket = [
                 ...state.basket,
-                [product.name]: 1
-            }
+                {
+                    ...product,
+                    piece: 1
+                }
+            ]
         }
-        // state.basket = [
-        //     ...state.basket,
-        //     product
-        // ]
+    },
+    removeToBasket(state, productName) {
+        const productInBasketIndex = state.basket.findIndex(el => el.name === productName)
+        if (productInBasketIndex === -1 || state.basket[productInBasketIndex].piece === 0) return
+        state.basket = state.basket.map((el, index) => {
+            if (index === productInBasketIndex) {
+                return {
+                    ...el,
+                    piece: el.piece - 1
+                }
+            } else return el
+        })
     }
 }
 
@@ -44,23 +62,46 @@ export const actions = {
                 commit('setProducts', products)
             })
             .catch(console.error)
+    },
+    makeOrder({ state }, { name }) {
+        let text = ''
+        let totalPrice = 0
+        state.basket.map(el => {
+            const price = el.discount || el.price
+            text += '\n' + el.piece + ' adet: ' + el.name + '(' + price + 'TL)'
+            totalPrice += el.piece * price
+        })
+        text += '\nToplam: ' + totalPrice + 'TL'
+        text = name + '\n' + text
+        text = text.replace('Ğ', 'g')
+            .replace('Ü', 'u')
+            .replace('Ş', 's')
+            .replace('I', 'i')
+            .replace('İ', 'i')
+            .replace('Ö', 'o')
+            .replace('Ç', 'c')
+            .replace('ğ', 'g')
+            .replace('ü', 'u')
+            .replace('ş', 's')
+            .replace('ı', 'i')
+            .replace('ö', 'o')
+            .replace('ç', 'c');
+        axios.post('http://localhost:8080/siparis', {
+            message: text
+        }).then(res => {
+            // console.log(res)
+        }).catch(err => {
+            // console.log(err)
+        })
     }
 }
 
 export const getters = {
-    basketProducts(state) {
-        const products = state.products
-        const basket = state.basket
-        return products.filter(el => Object.keys(basket).includes(el.name))
-    },
     basketTotal(state) {
-        const products = state.products
-        const basket = state.basket
-        return Object.keys(basket)
+        return state.basket
             .reduce((total, el) => {
-                const product = products.find(product => product.name === el)
-                const price = product.discount || product.price
-                return total + (price * basket[el])
+                const price = el.discount || el.price
+                return total + (price * el.piece)
             }, 0)
     }
 }
