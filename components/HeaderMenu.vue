@@ -6,7 +6,7 @@
       NuxtLink.header-menu__link(to="/") Anasayfa
       NuxtLink.header-menu__link(to="/products") Hurma
       NuxtLink.header-menu__link(to="#") Sipariş Ver
-      NuxtLink.header-menu__link(to="#") İletişim
+      NuxtLink.header-menu__link(to="/contact") İletişim
   .flex.space-x-8
     .header-menu__contact.mr-4
       b.text-base Sadık Yılmaz
