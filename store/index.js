@@ -70,26 +70,26 @@ export const actions = {
         let totalPrice = 0
 
         name = name.toLowerCase()
-            .replace('ğ', 'g')
-            .replace('ü', 'u')
-            .replace('ş', 's')
-            .replace('ı', 'i')
-            .replace('ö', 'o')
-            .replace('ç', 'c');
+            .replaceAll('ğ', 'g')
+            .replaceAll('ü', 'u')
+            .replaceAll('ş', 's')
+            .replaceAll('ı', 'i')
+            .replaceAll('ö', 'o')
+            .replaceAll('ç', 'c');
         address = address.toLowerCase()
-            .replace('ğ', 'g')
-            .replace('ü', 'u')
-            .replace('ş', 's')
-            .replace('ı', 'i')
-            .replace('ö', 'o')
-            .replace('ç', 'c');
+            .replaceAll('ğ', 'g')
+            .replaceAll('ü', 'u')
+            .replaceAll('ş', 's')
+            .replaceAll('ı', 'i')
+            .replaceAll('ö', 'o')
+            .replaceAll('ç', 'c');
         phone = phone.toLowerCase()
-            .replace('ğ', 'g')
-            .replace('ü', 'u')
-            .replace('ş', 's')
-            .replace('ı', 'i')
-            .replace('ö', 'o')
-            .replace('ç', 'c');
+            .replaceAll('ğ', 'g')
+            .replaceAll('ü', 'u')
+            .replaceAll('ş', 's')
+            .replaceAll('ı', 'i')
+            .replaceAll('ö', 'o')
+            .replaceAll('ç', 'c');
 
         await axios.post('https://hurma-api.herokuapp.com/siparis', {
             message: '----------'
