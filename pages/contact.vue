@@ -9,7 +9,7 @@ div
       )
         whatsapp-icon.w-16(style="fill: green")
         b WhatsApp
-        span.text-gray-600 +90 (534) 797 91 68
+        span.text-gray-600 +90 (533) 487 26 73
       a.m-8.flex.justify-center.flex-col.items-center.text-center(
         href="http://www.instagram.com/devahurma",
         target="_blank"
