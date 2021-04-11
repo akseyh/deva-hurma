@@ -63,36 +63,79 @@ export const actions = {
             })
             .catch(console.error)
     },
-    makeOrder({ state }, { name }) {
-        let text = ''
+    async makeOrder({ state }, { name, address, phone }) {
         let totalPrice = 0
-        state.basket.map(el => {
-            const price = el.discount || el.price
-            text += '\n' + el.piece + ' adet: ' + el.name + '(' + price + 'TL)'
-            totalPrice += el.piece * price
-        })
-        text += '\nToplam: ' + totalPrice + 'TL'
-        text = name + '\n' + text
-        text = text.replace('Ğ', 'g')
-            .replace('Ü', 'u')
-            .replace('Ş', 's')
-            .replace('I', 'i')
-            .replace('İ', 'i')
-            .replace('Ö', 'o')
-            .replace('Ç', 'c')
+
+        name = name.toLowerCase()
             .replace('ğ', 'g')
             .replace('ü', 'u')
             .replace('ş', 's')
             .replace('ı', 'i')
             .replace('ö', 'o')
             .replace('ç', 'c');
-        axios.post('http://localhost:8080/siparis', {
-            message: text
-        }).then(res => {
-            // console.log(res)
-        }).catch(err => {
-            // console.log(err)
+        address = address.toLowerCase()
+            .replace('ğ', 'g')
+            .replace('ü', 'u')
+            .replace('ş', 's')
+            .replace('ı', 'i')
+            .replace('ö', 'o')
+            .replace('ç', 'c');
+        phone = phone.toLowerCase()
+            .replace('ğ', 'g')
+            .replace('ü', 'u')
+            .replace('ş', 's')
+            .replace('ı', 'i')
+            .replace('ö', 'o')
+            .replace('ç', 'c');
+
+        await axios.post('http://localhost:8080/siparis', {
+            message: '----------'
         })
+
+        await axios.post('http://localhost:8080/siparis', {
+            message: name
+        })
+
+        await axios.post('http://localhost:8080/siparis', {
+            message: phone
+        })
+
+        await axios.post('http://localhost:8080/siparis', {
+            message: address
+        })
+
+        Promise.all(
+            state.basket.map(async el => {
+                const price = el.discount || el.price
+                let text = el.piece + ' adet: ' + el.name + '(' + price + 'TL)'
+                totalPrice += el.piece * price
+                text = text
+                    .replace('Ğ', 'G')
+                    .replace('Ü', 'I')
+                    .replace('Ş', 's')
+                    .replace('İ', 'i')
+                    .replace('Ö', 'o')
+                    .replace('Ç', 'c')
+                    .replace('ğ', 'g')
+                    .replace('ü', 'u')
+                    .replace('ş', 's')
+                    .replace('ı', 'i')
+                    .replace('ö', 'o')
+                    .replace('ç', 'c')
+                    .toLowerCase();
+                await axios.post('http://localhost:8080/siparis', {
+                    message: text
+                })
+                console.log(text)
+
+            })
+        ).then(() => {
+            const totalPriceText = 'Toplam: ' + totalPrice + 'TL'
+            axios.post('http://localhost:8080/siparis', {
+                message: totalPriceText
+            })
+        })
+
     }
 }
 

@@ -17,8 +17,10 @@ div
       )
     .flex.justify-end.flex-col.items-end.mr-6
       b.text-xl Toplam Tutar: {{ basketTotal }}TL
-      button.bg-green-600.text-white.p-2.rounded-md.w-52(@click="toStepOne") Sipariş Ver
+      button.bg-green-600.text-white.p-2.rounded-md.w-52(@click="toStepOne") Devam Et
   div(v-else-if="step === 1")
+    .w-full.rounded-xl.bg-red-600.text-white.pl-8.py-4.transition(v-if="error")
+      | Alanları doğru girdiğinizden emin olun.
     .my-8.flex.flex-wrap.justify-center.items-end.flex-col
       .flex.flex-col.w-full
         span Ad soyad:
@@ -44,12 +46,23 @@ div
         )
       button.bg-green-600.text-white.p-2.rounded-md.w-52.mt-8(
         @click="toStepTwo"
-      ) Devam Et
+      ) Sipariş Oluştur
   div(v-else-if="step === 2")
     .bg-green-600.text-white.rounded-xl.pl-8.py-4 
       div {{ name }}, siparişin oluşturuldu!
-      .mt-4 Aşağıdaki hesaplara toplam tutar miktarını eft/havale ile gönderebilirsiniz.
-        b Ödemenin açıklama kısmında ad, soyad belirtmeyi unutmayın!
+      .mt-4 Aşağıdaki hesaplara toplam tutar miktarını eft/havale ile gönderdiğinde siparişin kargoya verilecektir.
+      b Ödemenin açıklama kısmında ad, soyad belirtmeyi unutmayın!
+    .flex.flex-row.justify-center.flex-wrap.mt-8
+      .m-8.flex.justify-center.flex-col.items-center.text-center
+        img.w-16(src="~/assets/bank_kt.png")
+        b Kuveyt Türk
+        span.text-gray-600 SADIK YILMAZ
+        span IBAN: TR36 0020 5000 0011 0124 5000 02
+      .m-8.flex.justify-center.flex-col.items-center.text-center
+        img.w-16(src="~/assets/bank_tf.png")
+        b Türkiye Finans
+        span.text-gray-600 SADIK YILMAZ
+        span IBAN: TR17 0020 6000 0400 5343 0600 02
 </template>
 
 <script>
@@ -85,10 +98,17 @@ export default {
         this.error = true;
         return;
       }
+      this.error = false;
+      this.makeOrder();
       this.step = 2;
     },
-    makeOrder(name) {
-      this.$store.dispatch("makeOrder", { name });
+    makeOrder() {
+      const payload = {
+        name: this.name,
+        address: this.address,
+        phone: this.phone,
+      };
+      this.$store.dispatch("makeOrder", payload);
     },
   },
 };
