@@ -41,6 +41,9 @@ export const mutations = {
                 }
             } else return el
         })
+    },
+    resetBasket(state) {
+        state.basket = []
     }
 }
 
@@ -63,7 +66,7 @@ export const actions = {
             })
             .catch(console.error)
     },
-    async makeOrder({ state }, { name, address, phone }) {
+    async makeOrder({ state, commit }, { name, address, phone }) {
         let totalPrice = 0
 
         name = name.toLowerCase()
@@ -88,19 +91,19 @@ export const actions = {
             .replace('ö', 'o')
             .replace('ç', 'c');
 
-        await axios.post('http://localhost:8080/siparis', {
+        await axios.post('https://hurma-api.herokuapp.com/siparis', {
             message: '----------'
         })
 
-        await axios.post('http://localhost:8080/siparis', {
+        await axios.post('https://hurma-api.herokuapp.com/siparis', {
             message: name
         })
 
-        await axios.post('http://localhost:8080/siparis', {
+        await axios.post('https://hurma-api.herokuapp.com/siparis', {
             message: phone
         })
 
-        await axios.post('http://localhost:8080/siparis', {
+        await axios.post('https://hurma-api.herokuapp.com/siparis', {
             message: address
         })
 
@@ -123,17 +126,17 @@ export const actions = {
                     .replace('ö', 'o')
                     .replace('ç', 'c')
                     .toLowerCase();
-                await axios.post('http://localhost:8080/siparis', {
+                await axios.post('https://hurma-api.herokuapp.com/siparis', {
                     message: text
                 })
-                console.log(text)
 
             })
-        ).then(() => {
+        ).then(async () => {
             const totalPriceText = 'Toplam: ' + totalPrice + 'TL'
-            axios.post('http://localhost:8080/siparis', {
+            axios.post('https://hurma-api.herokuapp.com/siparis', {
                 message: totalPriceText
             })
+            commit('resetBasket')
         })
 
     }

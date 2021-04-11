@@ -1,7 +1,7 @@
 <template lang="pug">
 div
   .w-full.bg-red-500.pl-8.py-4.rounded-xl.text-white.mb-96(
-    v-if="!basket.length"
+    v-if="!basket.length && step !== 2"
   )
     span Sepetinizde ürün yok! Anasayfadan isteğiniz ürünleri seçerek sepetinize ekleyebilirsiniz.
   div(v-else-if="step === 0")
@@ -48,9 +48,9 @@ div
         @click="toStepTwo"
       ) Sipariş Oluştur
   div(v-else-if="step === 2")
-    .bg-green-600.text-white.rounded-xl.pl-8.py-4 
+    .bg-green-600.text-white.rounded-xl.pl-8.py-4
       div {{ name }}, siparişin oluşturuldu!
-      .mt-4 Aşağıdaki hesaplara toplam tutar miktarını eft/havale ile gönderdiğinde siparişin kargoya verilecektir.
+      .mt-4 Aşağıdaki iban numaralarına toplam sipariş tutarını {{ '(' + orderTotal + 'TL)' }} eft/havale ile gönderdiğinizde siparişiniz kargoya verilecektir.
       b Ödemenin açıklama kısmında ad, soyad belirtmeyi unutmayın!
     .flex.flex-row.justify-center.flex-wrap.mt-8
       .m-8.flex.justify-center.flex-col.items-center.text-center
@@ -80,6 +80,7 @@ export default {
       phone: "",
       step: 0,
       error: false,
+      orderTotal: 0,
     };
   },
   methods: {
@@ -108,6 +109,7 @@ export default {
         address: this.address,
         phone: this.phone,
       };
+      this.orderTotal = this.basketTotal;
       this.$store.dispatch("makeOrder", payload);
     },
   },
