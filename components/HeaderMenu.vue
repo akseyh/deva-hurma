@@ -5,10 +5,9 @@
     .header-menu__links
       NuxtLink.header-menu__link(to="/") Anasayfa
       NuxtLink.header-menu__link(to="/products") Hurma
-      NuxtLink.header-menu__link(to="#") Sipariş Ver
       NuxtLink.header-menu__link(to="/contact") İletişim
-  .flex.space-x-8
-    .header-menu__contact.mr-4
+  .header-menu__right
+    .header-menu__contact
       b.text-base Sadık Yılmaz
       b.flex.items-center.space-x-2
         PhoneIcon.w-4.text-green-500
@@ -33,15 +32,17 @@ export default {
 
 <style lang="sass" scoped>
 .header-menu
-  @apply w-full flex items-center justify-between
+  @apply w-full flex items-center justify-between flex-wrap justify-center
   &__left
-    @apply flex
+    @apply flex md:w-auto w-full justify-between
+  &__right
+    @apply flex space-x-8 justify-around w-full md:w-auto
   &__logo
     @apply h-12 sm:h-20
   &__links
-    @apply flex-grow sm:flex items-center px-4 space-x-8 hidden
+    @apply flex-grow flex items-center px-4 space-x-8 justify-end
   &__link
     @apply font-bold cursor-pointer transition hover:text-green-600 border-b border-white hover:border-green-600
   &__basket-title
-    @apply sm:flex items-center justify-end p-2 hidden space-x-4 bg-green-500 rounded-xl text-white cursor-pointer
+    @apply flex flex-row w-32 items-center justify-center p-2 space-x-4 bg-green-500 hover:bg-green-600 transition rounded-xl text-white cursor-pointer w-max min-w-max
 </style>
