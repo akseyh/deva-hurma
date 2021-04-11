@@ -1,3 +1,4 @@
+import { lowerCase } from '../utils/validations'
 const axios = require('axios')
 
 export const state = {
@@ -69,27 +70,9 @@ export const actions = {
     async makeOrder({ state, commit }, { name, address, phone }) {
         let totalPrice = 0
 
-        name = name.toLowerCase()
-            .replaceAll('ğ', 'g')
-            .replaceAll('ü', 'u')
-            .replaceAll('ş', 's')
-            .replaceAll('ı', 'i')
-            .replaceAll('ö', 'o')
-            .replaceAll('ç', 'c');
-        address = address.toLowerCase()
-            .replaceAll('ğ', 'g')
-            .replaceAll('ü', 'u')
-            .replaceAll('ş', 's')
-            .replaceAll('ı', 'i')
-            .replaceAll('ö', 'o')
-            .replaceAll('ç', 'c');
-        phone = phone.toLowerCase()
-            .replaceAll('ğ', 'g')
-            .replaceAll('ü', 'u')
-            .replaceAll('ş', 's')
-            .replaceAll('ı', 'i')
-            .replaceAll('ö', 'o')
-            .replaceAll('ç', 'c');
+        name = lowerCase(name)
+        address = lowerCase(address)
+        phone = lowerCase(phone)
 
         await axios.post('https://hurma-api.herokuapp.com/siparis', {
             message: '----------'
@@ -112,20 +95,8 @@ export const actions = {
                 const price = el.discount || el.price
                 let text = el.piece + ' adet: ' + el.name + '(' + price + 'TL)'
                 totalPrice += el.piece * price
-                text = text
-                    .replace('Ğ', 'G')
-                    .replace('Ü', 'I')
-                    .replace('Ş', 's')
-                    .replace('İ', 'i')
-                    .replace('Ö', 'o')
-                    .replace('Ç', 'c')
-                    .replace('ğ', 'g')
-                    .replace('ü', 'u')
-                    .replace('ş', 's')
-                    .replace('ı', 'i')
-                    .replace('ö', 'o')
-                    .replace('ç', 'c')
-                    .toLowerCase();
+                text = lowerCase(text)
+
                 await axios.post('https://hurma-api.herokuapp.com/siparis', {
                     message: text
                 })
