@@ -1,15 +1,16 @@
 export function lowerCase(text) {
-    return text.replaceAll('Ğ', 'G')
-        .replaceAll('Ü', 'I')
-        .replaceAll('Ş', 's')
-        .replaceAll('İ', 'i')
-        .replaceAll('Ö', 'o')
+    return text
         .replaceAll('Ç', 'c')
+        .replaceAll('ç', 'c')
         .replaceAll('ğ', 'g')
-        .replaceAll('ü', 'u')
-        .replaceAll('ş', 's')
+        .replaceAll('Ğ', 'G')
+        .replaceAll('İ', 'i')
         .replaceAll('ı', 'i')
         .replaceAll('ö', 'o')
-        .replaceAll('ç', 'c')
+        .replaceAll('Ö', 'o')
+        .replaceAll('Ş', 's')
+        .replaceAll('ş', 's')
+        .replaceAll('Ü', 'U')
+        .replaceAll('ü', 'u')
         .toLowerCase();
 }
