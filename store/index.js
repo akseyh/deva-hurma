@@ -37,9 +37,6 @@ export const mutations = {
 
         state.basket = state.basket.map((el, index) => {
             if (index === productInBasketIndex) {
-                if (el.piece - 1 === 0) {
-                    console.log('BİTTTİİİ')
-                }
                 return {
                     ...el,
                     piece: el.piece - 0.5
