@@ -13,7 +13,8 @@ div
         :name="product.name",
         :price="product.price",
         :imageLink="product.pictureUrl",
-        :discount="product.discount"
+        :discount="product.discount",
+        :stok="product.stok"
       )
     .flex.justify-end.flex-col.items-end.mr-6
       b.text-xl Toplam Tutar: {{ basketTotal }}TL
