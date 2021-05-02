@@ -20,6 +20,7 @@
         :price="product.price",
         :imageLink="product.pictureUrl",
         :discount="product.discount",
+        :stok="product.stok",
         @addToBasket="$store.commit('addToBasket', product)"
       )
 </template>

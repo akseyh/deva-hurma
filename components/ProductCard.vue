@@ -11,8 +11,9 @@
     ) {{ price + '₺' }}
   button.product-card__add-button(
     @click="$emit('addToBasket')",
-    v-if="!productInBasket"
+    v-if="!productInBasket && stok"
   ) Sepete Ekle
+  button(v-else-if="!stok") Stokta Yok
   .flex.justify-between(v-else)
     button.bg-gray-500.w-8.text-white.rounded-sm(
       @click="$store.commit('removeToBasket', name)"
@@ -36,6 +37,7 @@ export default {
       default:
         "//piotrkowalski.pw/assets/camaleon_cms/image-not-found-4a963b95bf081c3ea02923dceaeb3f8085e1a654fc54840aac61a57a60903fef.png",
     },
+    stok: Boolean,
   },
   computed: {
     ...mapState(["basket"]),
