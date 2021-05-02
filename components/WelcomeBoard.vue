@@ -5,7 +5,7 @@
     .welcome-board__subtitle HURMA
     .welcome-board__other-text %100 ORGANİK
     span En uygun fiyatlarla
-    button.welcome-board__button HEMEN SİPARİŞ VER
+    button.welcome-board__button(@click="$router.push('/contact')") HEMEN SİPARİŞ VER
 </template>
 
 <style lang="sass" scoped>
