@@ -14,11 +14,11 @@
     v-if="!productInBasket"
   ) Sepete Ekle
   .flex.justify-between(v-else)
-    button.bg-gray-500.w-8.text-white(
+    button.bg-gray-500.w-8.text-white.rounded-sm(
       @click="$store.commit('removeToBasket', name)"
     ) -
     span {{ productInBasket.piece }}
-    button.bg-gray-500.w-8.text-white(
+    button.bg-green-500.w-8.text-white(
       @click="$store.commit('addToBasket', { name, price, discount, imageLink })"
     ) +
 </template>

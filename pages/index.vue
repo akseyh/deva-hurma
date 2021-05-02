@@ -2,8 +2,14 @@
 .w-full
   welcome-board
   .banner-area
-    img.banner-area__image(src="~/assets/hurma-banner.png")
-    img.banner-area__image(src="~/assets/kargo-banner.png")
+    img.banner-area__image(
+      src="~/assets/hurma-banner.png",
+      @click="$router.push('/contact')"
+    )
+    img.banner-area__image(
+      src="~/assets/kargo-banner.png",
+      @click="$router.push('/contact')"
+    )
   .flex.flex-col.mt-12
     .text-4xl.font-bold.text-center Tüm Hurma Çeşitleri
     .flex.flex-wrap.m-4.justify-center
@@ -46,7 +52,7 @@ export default {
 
 <style lang="sass" scoped>
 .banner-area
-  @apply flex flex-row w-full mt-4 justify-center flex-wrap
+  @apply flex flex-row w-full mt-4 justify-center md:flex-nowrap flex-wrap
   &__image
-    @apply cursor-pointer mx-2 mt-2
+    @apply cursor-pointer mx-2 mt-2 w-full md:w-1/2
 </style>

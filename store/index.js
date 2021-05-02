@@ -17,7 +17,7 @@ export const mutations = {
                 if (el.name === product.name) {
                     return {
                         ...el,
-                        piece: el.piece + 1
+                        piece: el.piece + 0.5
                     }
                 } else return el
             })
@@ -34,14 +34,18 @@ export const mutations = {
     removeToBasket(state, productName) {
         const productInBasketIndex = state.basket.findIndex(el => el.name === productName)
         if (productInBasketIndex === -1 || state.basket[productInBasketIndex].piece === 0) return
+
         state.basket = state.basket.map((el, index) => {
             if (index === productInBasketIndex) {
+                if (el.piece - 1 === 0) {
+                    console.log('BİTTTİİİ')
+                }
                 return {
                     ...el,
-                    piece: el.piece - 1
+                    piece: el.piece - 0.5
                 }
             } else return el
-        })
+        }).filter(el => el.piece > 0)
     },
     resetBasket(state) {
         state.basket = []
