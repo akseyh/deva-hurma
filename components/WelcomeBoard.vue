@@ -5,7 +5,7 @@
     .welcome-board__subtitle HURMA
     .welcome-board__other-text %100 ORGANİK
     span En uygun fiyatlarla
-    button.welcome-board__button(@click="$router.push('/contact')") HEMEN SİPARİŞ VER
+    button.welcome-board__button HEMEN SİPARİŞ VER
 </template>
 
 <style lang="sass" scoped>
@@ -13,7 +13,7 @@
     background: url('~assets/hurma.jpeg')
     @apply w-full relative flex flex-col bg-no-repeat bg-right-top
     &__description
-        @apply w-full sm:w-min p-24 z-20 flex flex-col bg-white bg-opacity-40
+        @apply w-full p-24 z-20 flex flex-col sm:bg-transparent bg-white bg-opacity-40 border-0 sm:border-2 border-gray-100
     &__title
         @apply font-bold text-green-400
     &__subtitle

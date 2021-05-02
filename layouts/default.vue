@@ -1,8 +1,8 @@
 <template lang='pug'>
 .default-layout
   basket
-  .default-layout__fixed-top
-    information-section
+  //- .default-layout__fixed-top
+  //-   information-section
   .default-layout__app-container
     header-menu.default-layout__header
     Nuxt.default-layout__app

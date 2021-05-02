@@ -3,7 +3,7 @@ div
   .w-full.bg-red-500.pl-8.py-4.rounded-xl.text-white.mb-96(
     v-if="!basket.length && step !== 2"
   )
-    span Sepetinizde ürün yok! Anasayfadan isteğiniz ürünleri seçerek sepetinize ekleyebilirsiniz.
+    span Sepetinizde ürün yok!<br/> Anasayfadan istediğiniz ürünleri seçerek sepetinize ekleyebilirsiniz.
   div(v-else-if="step === 0")
     b.text-2xl.ml-4 Sepetteki Ürünler
     .my-8.flex.flex-wrap.justify-start.flex-row
