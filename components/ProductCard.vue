@@ -11,7 +11,7 @@
     ) {{ price + '₺' }}
   button.product-card__add-button(
     @click="$emit('addToBasket')",
-    v-if="!productInBasket && stok"
+    v-if="!productInBasket && stok && hasPrice"
   ) Sepete Ekle
   button(v-else-if="!stok") Stokta Yok
   .flex.justify-between(v-else)
