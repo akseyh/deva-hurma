@@ -13,7 +13,7 @@
     @click="$emit('addToBasket')",
     v-if="!productInBasket && stok && hasPrice"
   ) Sepete Ekle
-  button(v-else-if="!stok") Stokta Yok
+  button(v-else-if="!stok || !hasPrice") Stokta Yok
   .flex.justify-between(v-else)
     button.bg-gray-500.w-8.text-white.rounded-sm(
       @click="$store.commit('removeToBasket', name)"
