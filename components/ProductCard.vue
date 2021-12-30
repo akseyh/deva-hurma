@@ -2,7 +2,7 @@
 .product-card
   img.product-card__picture(:src="'https:' + imageLink")
   .product-card__name {{ name }}
-  .product-card__price
+  .product-card__price(v-if="hasPrice")
     .product-card__discount-text(
       :class="discount ? 'product-card__discount-text--has' : 'product-card__discount-text--not'"
     ) {{ discount + '₺' }}
@@ -44,7 +44,10 @@ export default {
     productInBasket() {
       return this.basket.find((el) => el.name === this.name && el.piece > 0);
     },
-  },
+    hasPrice() {
+      return !isNaN(this.price) && (this.discount === undefined || !isNaN(this.discount)) && this.stok
+    }
+  }
 };
 </script>
 

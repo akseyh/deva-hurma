@@ -7,7 +7,7 @@
       @click="$router.push('/contact')"
     )
     img.banner-area__image(
-      src="~/assets/kargo-banner.png",
+      src="~/assets/kargo-banner-new.png",
       @click="$router.push('/contact')"
     )
   .flex.flex-col.mt-12
