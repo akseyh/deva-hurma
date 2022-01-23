@@ -1,5 +1,7 @@
 # hurma
 
+[![Netlify Status](https://api.netlify.com/api/v1/badges/40cde4d2-b654-462e-b6c8-5dd56f8c8639/deploy-status)](https://app.netlify.com/sites/devahurma/deploys)
+
 ## Build Setup
 
 ```bash
