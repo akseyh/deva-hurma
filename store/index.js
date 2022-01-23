@@ -92,7 +92,7 @@ export const actions = {
 
     Promise.all(
       state.basket.map(async el => {
-        const price = el.discount || el.price
+        const price = el.discountPrice || el.price
         let text = el.piece + ' adet: ' + el.name + '(' + price + 'TL)'
         totalPrice += el.piece * price
         text = lowerCase(text)
@@ -132,7 +132,7 @@ export const getters = {
   basketTotal(state) {
     return state.basket
       .reduce((total, el) => {
-        const price = el.discount || el.price
+        const price = el.discountPrice || el.price
         return total + (price * el.piece)
       }, 0)
   }
