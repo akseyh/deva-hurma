@@ -2,6 +2,13 @@ export default {
   // Disable server-side rendering: https://go.nuxtjs.dev/ssr-mode
   ssr: false,
 
+  env: {
+    telegramAPIToken: process.env.TELEGRAM_API_TOKEN,
+    telegramChatId: process.env.TELEGRAM_CHAT_ID,
+    contentSpace: process.env.CONTENT_SPACE,
+    contentAccessToken: process.env.CONTENT_ACCESS_TOKEN
+  },
+
   // Target: https://go.nuxtjs.dev/config-target
   target: 'static',
 

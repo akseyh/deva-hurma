@@ -4,8 +4,8 @@ const axios = require('axios')
 const contentful = require('contentful')
 
 const client = contentful.createClient({
-  space: 'pi7eophtp1az',
-  accessToken: 'wy8xSGbivS16zUoBGzVO3psOZho8SwgdL5hQ9Uts4OQ',
+  space: process.env.contentSpace,
+  accessToken: process.env.contentAccessToken,
   host: 'preview.contentful.com'
 })
 
@@ -68,28 +68,17 @@ export const actions = {
       })
       .catch(console.error)
   },
-  async makeOrder({ state, commit }, { name, address, phone }) {
+  async makeOrder({ state, commit, dispatch }, { name, address, phone }) {
     let totalPrice = 0
 
     name = lowerCase(name)
     address = lowerCase(address)
     phone = lowerCase(phone)
 
-    await axios.post('https://hurma-api.herokuapp.com/siparis', {
-      message: '----------'
-    })
-
-    await axios.post('https://hurma-api.herokuapp.com/siparis', {
-      message: name
-    })
-
-    await axios.post('https://hurma-api.herokuapp.com/siparis', {
-      message: phone
-    })
-
-    await axios.post('https://hurma-api.herokuapp.com/siparis', {
-      message: address
-    })
+    await dispatch('orderNotification', { message: '----------' })
+    await dispatch('orderNotification', { message: name })
+    await dispatch('orderNotification', { message: phone })
+    await dispatch('orderNotification', { message: address })
 
     Promise.all(
       state.basket.map(async el => {
@@ -98,19 +87,23 @@ export const actions = {
         totalPrice += el.piece * price
         text = lowerCase(text)
 
-        await axios.post('https://hurma-api.herokuapp.com/siparis', {
-          message: text
-        })
-
+        await dispatch('orderNotification', { message: text })
       })
     ).then(async () => {
       const totalPriceText = 'Toplam: ' + totalPrice + 'TL'
-      axios.post('https://hurma-api.herokuapp.com/siparis', {
-        message: totalPriceText
-      })
+      await dispatch('orderNotification', { message: totalPriceText })
       commit('resetBasket')
     })
-
+  },
+  orderNotification({ }, { message }) {
+    const path = ('https://api.telegram.org/' + process.env.telegramAPIToken + '/sendMessage?chat_id=' + process.env.telegramChatId + '&parse_mode=Markdown&text=' + message).trim()
+    return axios.post(path)
+      .then(resp => {
+        console.log(resp)
+      })
+      .catch(err => {
+        console.log(err)
+      })
   }
 }
 
