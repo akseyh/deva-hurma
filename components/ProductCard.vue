@@ -1,27 +1,30 @@
 <template lang="pug">
 .product-card
   img.product-card__picture(:src="'https:' + imageLink")
-  .product-card__name {{ name }}
+  .product-card__name {{ product.name || '-' }}
   .product-card__price(v-if="hasPrice")
     .product-card__discount-text(
-      :class="discount ? 'product-card__discount-text--has' : 'product-card__discount-text--not'"
-    ) {{ discount + '₺' }}
+      :class="product.discountPrice ? 'product-card__discount-text--has' : 'product-card__discount-text--not'"
+    ) {{ product.discountPrice + '₺' }}
     .product-card__price-text(
-      :class="discount ? 'product-card__price-text--has' : 'product-card__price-text--not'"
-    ) {{ price + '₺' }}
+      :class="product.discountPrice ? 'product-card__price-text--has' : 'product-card__price-text--not'"
+    ) {{ product.price + '₺' }}
   button.product-card__add-button(
     @click="$emit('addToBasket')",
-    v-if="!productInBasket && stok && hasPrice"
+    v-if="!productInBasket && product.stok && hasPrice"
   ) Sepete Ekle
-  button(v-else-if="!stok || !hasPrice") Stokta Yok
-  .flex.justify-between(v-else)
-    button.bg-gray-500.w-8.text-white.rounded-sm(
-      @click="$store.commit('removeToBasket', name)"
-    ) -
-    span {{ productInBasket.piece }}
-    button.bg-green-500.w-8.text-white(
-      @click="$store.commit('addToBasket', { name, price, discount, imageLink })"
-    ) +
+  button(v-else-if="!product.stok || !hasPrice") Stokta Yok
+  .flex.flex-col.justify-center.items-center.gap-y-2.w-full(v-else)
+    .flex.justify-between.w-full
+      button.bg-gray-500.w-8.text-white.rounded-sm(
+        @click="$store.commit('subtractFromBasket', product.name)"
+      ) -
+      span {{ productInBasket.piece }}
+      button.bg-green-500.w-8.text-white(
+        @click="$store.commit('addToBasket', { name: product.name, price: product.price, discount: product.discountPrice, imageLink })"
+      ) +
+    .flex.justify-between.w-full.bg-red-500.text-sm.py-2.rounded-xl.text-white
+      button(class="focus:outline-none", @click="$store.commit('removeFromBasket', product.name)").w-full Sepetten Çıkar
 </template>
 
 <script>
@@ -29,23 +32,18 @@ import { mapState } from "vuex";
 export default {
   name: "ProductCard",
   props: {
-    name: String,
-    price: Number,
-    discount: Number,
-    imageLink: {
-      type: String,
-      default:
-        "//piotrkowalski.pw/assets/camaleon_cms/image-not-found-4a963b95bf081c3ea02923dceaeb3f8085e1a654fc54840aac61a57a60903fef.png",
-    },
-    stok: Boolean,
+    product: Object
   },
   computed: {
     ...mapState(["basket"]),
     productInBasket() {
-      return this.basket.find((el) => el.name === this.name && el.piece > 0);
+      return this.basket.find((el) => el.name === this.product.name && el.piece > 0);
     },
     hasPrice() {
-      return !isNaN(this.price) && (this.discount === undefined || !isNaN(this.discount)) && this.stok
+      return !isNaN(this.product.price) && (this.product.discountPrice === undefined || !isNaN(this.product.discountPrice)) && this.product.stok
+    },
+    imageLink() {
+      return this.product?.picture?.fields?.file?.url || null
     }
   }
 };

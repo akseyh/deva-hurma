@@ -11,12 +11,16 @@ const client = contentful.createClient({
 
 export const state = {
   products: [],
-  basket: []
+  basket: [],
+  others: []
 }
 
 export const mutations = {
   setProducts(state, val) {
     state.products = val
+  },
+  setOthers(state, val) {
+    state.others = val
   },
   addToBasket(state, product) {
     const hasProductInBasket = state.basket.find(el => el.name === product.name)
@@ -39,7 +43,7 @@ export const mutations = {
       ]
     }
   },
-  removeToBasket(state, productName) {
+  subtractFromBasket(state, productName) {
     const productInBasketIndex = state.basket.findIndex(el => el.name === productName)
     if (productInBasketIndex === -1 || state.basket[productInBasketIndex].piece === 0) return
 
@@ -54,6 +58,11 @@ export const mutations = {
   },
   resetBasket(state) {
     state.basket = []
+  },
+  removeFromBasket(state, productName) {
+    const payload = state.basket.filter(product => product.name !== productName)
+
+    state.basket = payload
   }
 }
 
@@ -105,6 +114,17 @@ export const actions = {
       .catch(err => {
         console.log(err)
       })
+  },
+  fetchOthers({ commit }) {
+    return client.getEntries({
+      content_type: 'item',
+      'fields.itemType.sys.id': '1Ldo7WaDJEAXWEzOERokyN'
+    })
+      .then((response) => {
+        const products = response.items.map(el => el.fields)
+        commit('setOthers', products)
+      })
+      .catch(console.error)
   }
 }
 

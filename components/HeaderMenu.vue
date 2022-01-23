@@ -5,6 +5,7 @@
     .header-menu__links
       NuxtLink.header-menu__link(to="/") Anasayfa
       NuxtLink.header-menu__link(to="/products") Hurma
+      NuxtLink.header-menu__link(to="/others") Diğer Ürünler
       NuxtLink.header-menu__link(to="/contact") İletişim
     .header-menu__hamburger
       button#menuBtn.hamburger.block(

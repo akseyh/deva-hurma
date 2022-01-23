@@ -14,13 +14,9 @@
     .text-4xl.font-bold.text-center Tüm Hurma Çeşitleri
     .flex.flex-wrap.m-4.justify-center
       product-card.mr-2.mb-2(
-        v-for="(product, index) in computedProducts",
+        v-for="(product, index) in products",
         :key="product.id",
-        :name="product.name",
-        :price="product.price",
-        :imageLink="product.pictureUrl",
-        :discount="product.discount",
-        :stok="product.stok",
+        :product="product",
         @addToBasket="$store.commit('addToBasket', product)"
       )
 </template>
@@ -34,16 +30,7 @@ export default {
     WelcomeBoard,
   },
   computed: {
-    ...mapState(["products", "basket"]),
-    computedProducts() {
-      return this.products.map((el) => {
-        const pictureUrl = el?.picture?.fields?.file?.url || null;
-        return {
-          ...el,
-          pictureUrl,
-        };
-      });
-    },
+    ...mapState(["products"])
   },
   async created() {
     await this.$store.dispatch("fetchProducts");

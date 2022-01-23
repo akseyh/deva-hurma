@@ -10,11 +10,7 @@ div
       product-card.mr-2.mb-2(
         v-for="product in basket",
         :key="product.id",
-        :name="product.name",
-        :price="product.price",
-        :imageLink="product.pictureUrl",
-        :discount="product.discount",
-        :stok="product.stok"
+        :product="product"
       )
     .flex.justify-end.flex-col.items-end.mr-6
       b.text-xl Toplam Tutar: {{ basketTotal }}TL
