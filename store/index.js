@@ -60,7 +60,8 @@ export const mutations = {
 export const actions = {
   fetchProducts({ commit }) {
     return client.getEntries({
-      content_type: 'product'
+      content_type: 'item',
+      'fields.itemType.sys.id': '2rz89q2OKAbk8Nzege9TYd'
     })
       .then((response) => {
         const products = response.items.map(el => el.fields)
