@@ -12,7 +12,8 @@ const client = contentful.createClient({
 export const state = {
   products: [],
   basket: [],
-  others: []
+  others: [],
+  banners: []
 }
 
 export const mutations = {
@@ -63,6 +64,9 @@ export const mutations = {
     const payload = state.basket.filter(product => product.name !== productName)
 
     state.basket = payload
+  },
+  setBanners(state, val) {
+    state.banners = val
   }
 }
 
@@ -125,6 +129,16 @@ export const actions = {
         commit('setOthers', products)
       })
       .catch(console.error)
+  },
+  fetchBanners({ commit }) {
+    return client.getEntries({
+      content_type: 'banners'
+    })
+      .then(response => {
+        const banners = response.items.map(el => el.fields)
+        commit('setBanners', banners)
+      })
+      .catch(console.error)
   }
 }
 
@@ -135,5 +149,9 @@ export const getters = {
         const price = el.discountPrice || el.price
         return total + (price * el.piece)
       }, 0)
+  },
+  basketWeight(state) {
+    return state.basket
+      .reduce((total, el) => total + (el.weight * el.piece), 0)
   }
 }

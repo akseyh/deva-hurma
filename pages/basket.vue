@@ -1,11 +1,15 @@
 <template lang="pug">
-div
+div(class="md:p-0 px-4")
+  .text-3xl.font-semibold.mb-8 Sepetiniz
   .w-full.bg-red-500.pl-8.py-4.rounded-xl.text-white.mb-96(
     v-if="!basket.length && step !== 2"
   )
     span Sepetinizde ürün yok!<br/> Anasayfadan istediğiniz ürünleri seçerek sepetinize ekleyebilirsiniz.
   div(v-else-if="step === 0")
-    b.text-2xl.ml-4 Sepetteki Ürünler
+    .w-full.bg-yellow-500.pl-8.py-4.rounded-xl.text-white.mb-4(v-if="basketWeight < 5")
+      .text-xl.font-semibold 5kg ve üzeri KARGO BEDAVA!
+      span Sepetinize {{ 5 - basketWeight}}kg daha ürün ekleyerek kargo bedava kampanyasından faydalanabilirsiniz.
+    b.text-2xl.ml-4 Sepetteki Ürünler ({{basket.length}})
     .my-8.flex.flex-wrap.justify-start.flex-row
       product-card.mr-2.mb-2(
         v-for="product in basket",
@@ -47,16 +51,17 @@ div
   div(v-else-if="step === 2")
     .bg-green-600.text-white.rounded-xl.pl-8.py-4
       div {{ name }}, siparişin oluşturuldu!
-      .mt-4 Aşağıdaki iban numaralarına toplam sipariş tutarını {{ '(' + orderTotal + 'TL)' }} eft/havale ile gönderdiğinizde siparişiniz kargoya verilecektir.
+      .mt-4 Aşağıdaki iban numaralarına toplam sipariş tutarını {{ '(' + basketTotal + 'TL)' }} eft/havale ile gönderdiğinizde siparişiniz kargoya verilecektir.
       b Ödemenin açıklama kısmında ad, soyad belirtmeyi unutmayın!
+    span {{basketTotal}}
     .flex.flex-row.justify-center.flex-wrap.mt-8
       .m-8.flex.justify-center.flex-col.items-center.text-center
-        img.w-16(src="~/assets/bank_kt.png")
+        img.w-16(src="~/assets/images/bank_kt.png")
         b Kuveyt Türk
         span.text-gray-600 SADIK YILMAZ
         span IBAN: TR36 0020 5000 0011 0124 5000 02
       .m-8.flex.justify-center.flex-col.items-center.text-center
-        img.w-16(src="~/assets/bank_tf.png")
+        img.w-16(src="~/assets/images/bank_tf.png")
         b Türkiye Finans
         span.text-gray-600 SADIK YILMAZ
         span IBAN: TR17 0020 6000 0400 5343 0600 02
@@ -68,7 +73,7 @@ export default {
   name: "basket",
   computed: {
     ...mapState(["basket"]),
-    ...mapGetters(["basketTotal"]),
+    ...mapGetters(["basketTotal", "basketWeight"]),
   },
   data() {
     return {
@@ -76,8 +81,7 @@ export default {
       address: "",
       phone: "",
       step: 0,
-      error: false,
-      orderTotal: 0,
+      error: false
     };
   },
   methods: {
@@ -106,7 +110,6 @@ export default {
         address: this.address,
         phone: this.phone,
       };
-      this.orderTotal = this.basketTotal;
       this.$store.dispatch("makeOrder", payload);
     },
   },

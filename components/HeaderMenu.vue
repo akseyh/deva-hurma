@@ -1,7 +1,7 @@
 <template lang="pug">
 .header-menu
   .header-menu__left
-    img.header-menu__logo(src="~/assets/logo.png", @click="$router.push('/')")
+    img.header-menu__logo(src="~/assets/images/logo.png", @click="$router.push('/')")
     .header-menu__links
       NuxtLink.header-menu__link(to="/") Anasayfa
       NuxtLink.header-menu__link(to="/products") Hurma
@@ -19,6 +19,7 @@
   .header-menu__hamburger-links(:class="{ open: isMenuOpen }")
     NuxtLink.hamburger-link(to="/") Anasayfa
     NuxtLink.hamburger-link(to="/products") Hurma
+    NuxtLink.hamburger-link(to="/others") Diğer Ürünler
     NuxtLink.hamburger-link(to="/contact") İletişim
   .header-menu__right
     .header-menu__contact

@@ -1,16 +1,16 @@
 <template lang="pug">
-div
-  b.text-4xl.ml-4 Sosyal Medya ve İletişim
+div(class="md:p-0 px-4")
+  b.text-4xl Sosyal Medya ve İletişim
   .flex.flex-col
-    .flex.flex-row.justify-center.flex-wrap.mt-8
-      a.m-8.flex.justify-center.flex-col.items-center.text-center.w-auto(
+    .flex.flex-row.justify-center.flex-wrap.mt-10.gap-8
+      a.flex.justify-center.flex-col.items-center.text-center.w-auto(
         href="https://api.whatsapp.com/send?phone=905334872673&text=Sipari%C5%9F%20vermek%20istiyorum.",
         target="_blank"
       )
         whatsapp-icon.w-16(style="fill: green")
         b WhatsApp
         span.text-gray-600 +90 (533) 487 26 73
-      a.m-8.flex.justify-center.flex-col.items-center.text-center(
+      a.flex.justify-center.flex-col.items-center.text-center(
         href="http://www.instagram.com/devahurma",
         target="_blank"
       )
@@ -19,14 +19,14 @@ div
         )
         b Instagram
         span.text-gray-600 @devahurma
-      a.m-8.flex.justify-center.flex-col.items-center.text-center(
+      a.flex.justify-center.flex-col.items-center.text-center(
         href="http://www.fb.me/devahurma",
         target="_blank"
       )
         facebook-icon.w-16(style="fill: blue")
         b Facebook
         span.text-gray-600 fb.me/devahurma
-      a.m-8.flex.justify-center.flex-col.items-center.text-center(
+      a.flex.justify-center.flex-col.items-center.text-center(
         href="mailto:sadikyilmaz@devahurma.com"
       )
         email-icon.w-16(style="fill: gray")
@@ -34,12 +34,12 @@ div
         span.text-gray-600 sadikyilmaz@devahurma.com
     .flex.flex-row.justify-center.flex-wrap.mt-8
       .m-8.flex.justify-center.flex-col.items-center.text-center
-        img.w-16(src="~/assets/bank_kt.png")
+        img.w-16(src="~/assets/images/bank_kt.png")
         b Kuveyt Türk
         span.text-gray-600 SADIK YILMAZ
         span IBAN: TR36 0020 5000 0011 0124 5000 02
       .m-8.flex.justify-center.flex-col.items-center.text-center
-        img.w-16(src="~/assets/bank_tf.png")
+        img.w-16(src="~/assets/images/bank_tf.png")
         b Türkiye Finans
         span.text-gray-600 SADIK YILMAZ
         span IBAN: TR17 0020 6000 0400 5343 0600 02

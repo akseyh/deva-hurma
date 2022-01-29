@@ -1,13 +1,15 @@
 <template lang="pug">
-.flex.flex-col.mt-12
-  .text-4xl.font-bold.text-center Diğer Ürünler
-  .flex.flex-wrap.m-4.justify-center
+div(class="md:p-0 px-4")
+  .text-4xl.font-bold.mb-4 Diğer Ürünler
+  .flex.flex-wrap.justify-center(v-if="others.length")
     product-card.mr-2.mb-2(
       v-for="(product, index) in others",
       :key="product.id",
       :product="product"
       @addToBasket="$store.commit('addToBasket', product)"
     )
+  .flex.flex-wrap.justify-center.w-full.py-32.bg-green-500(v-else)
+    .text-white.text-semibold.text-4xl Çok Yakında!
 </template>
 
 <script>

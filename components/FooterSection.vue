@@ -1,6 +1,6 @@
 <template lang="pug">
 .footer-section
-  img.footer-section__image(src="~/assets/logo.png")
+  img.footer-section__image(src="~/assets/images/logo.png")
   span.footer-section__contact
     b Telefon:
     span +90 (533) 487 26 73

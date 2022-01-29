@@ -1,19 +1,17 @@
 <template lang='pug'>
-.w-full
+div(class="md:p-0 px-4")
   welcome-board
-  .banner-area
+  .banner-area(v-if="!!banners.length")
     img.banner-area__image(
-      src="~/assets/hurma-banner.png",
-      @click="$router.push('/contact')"
-    )
-    img.banner-area__image(
-      src="~/assets/kargo-banner-new.png",
+      v-for="(banner, idx) in banners"
+      :key="idx"
+      :src="banner.image.fields.file.url",
       @click="$router.push('/contact')"
     )
   .flex.flex-col.mt-12
     .text-4xl.font-bold.text-center Tüm Hurma Çeşitleri
-    .flex.flex-wrap.m-4.justify-center
-      product-card.mr-2.mb-2(
+    .flex.flex-wrap.mt-4.justify-center.gap-2
+      product-card(
         v-for="(product, index) in products",
         :key="product.id",
         :product="product",
@@ -30,7 +28,7 @@ export default {
     WelcomeBoard,
   },
   computed: {
-    ...mapState(["products"])
+    ...mapState(["products", "banners"])
   },
   async created() {
     await this.$store.dispatch("fetchProducts");
@@ -40,7 +38,7 @@ export default {
 
 <style lang="sass" scoped>
 .banner-area
-  @apply flex flex-row w-full mt-4 justify-center md:flex-nowrap flex-wrap
+  @apply flex flex-row w-full mt-4 justify-between gap-x-4 md:flex-nowrap flex-wrap overflow-x-scroll
   &__image
-    @apply cursor-pointer mx-2 mt-2 w-full md:w-1/2
+    @apply cursor-pointer w-full md:w-1/2
 </style>

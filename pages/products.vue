@@ -1,5 +1,5 @@
 <template lang="pug">
-.pl-8
+div(class="md:p-0 px-4")
   b.text-4xl Hurma İle İlgili Bilgiler
   .mt-8
     i.text-2xl

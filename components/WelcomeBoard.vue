@@ -10,7 +10,7 @@
 
 <style lang="sass" scoped>
 .welcome-board
-    background: url('~assets/hurma.jpeg')
+    background: url('~assets/images/hurma.jpeg')
     @apply w-full relative flex flex-col bg-no-repeat bg-right-top
     &__description
         @apply w-full p-24 z-20 flex flex-col sm:bg-transparent bg-white bg-opacity-40 border-0 sm:border-2 border-gray-100
