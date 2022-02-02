@@ -30,7 +30,7 @@ export const mutations = {
         if (el.name === product.name) {
           return {
             ...el,
-            piece: el.piece + 0.5
+            piece: el.piece + 1
           }
         } else return el
       })
@@ -52,7 +52,7 @@ export const mutations = {
       if (index === productInBasketIndex) {
         return {
           ...el,
-          piece: el.piece - 0.5
+          piece: el.piece - 1
         }
       } else return el
     }).filter(el => el.piece > 0)
