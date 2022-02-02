@@ -1,6 +1,6 @@
 <template lang="pug">
 div(class="md:p-0 px-4")
-  .text-4xl.font-bold.mb-4 Diğer Ürünler
+  .text-2xl.font-bold.mb-8(class="md:text-4xl") Diğer Ürünler
   .flex.flex-wrap.justify-center(v-if="others.length")
     product-card.mr-2.mb-2(
       v-for="(product, index) in others",

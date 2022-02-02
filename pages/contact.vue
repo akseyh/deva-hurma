@@ -1,6 +1,6 @@
 <template lang="pug">
 div(class="md:p-0 px-4")
-  b.text-4xl Sosyal Medya ve İletişim
+  .text-2xl.font-bold.mb-8(class="md:text-4xl") Sosyal Medya ve İletişim
   .flex.flex-col
     .flex.flex-row.justify-center.flex-wrap.mt-10.gap-8
       a.flex.justify-center.flex-col.items-center.text-center.w-auto(

@@ -1,6 +1,6 @@
 <template lang="pug">
 div(class="md:p-0 px-4")
-  b.text-4xl Hurma İle İlgili Bilgiler
+  .text-2xl.font-bold.mb-8(class="md:text-4xl") Hurma İle İlgili Bilgiler
   .mt-8
     i.text-2xl
       | Her Derde

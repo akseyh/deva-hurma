@@ -1,14 +1,14 @@
 <template lang="pug">
 div(class="md:p-0 px-4")
-  .text-4xl.font-bold.mb-8 Sepetiniz
+  .text-2xl.font-bold.mb-8(class="md:text-4xl") Sepetiniz
   .w-full.bg-red-500.pl-8.py-4.rounded-xl.text-white.mb-96(
     v-if="!basket.length && step !== 2"
   )
     span Sepetinizde ürün yok!<br/> Anasayfadan istediğiniz ürünleri seçerek sepetinize ekleyebilirsiniz.
   div(v-else-if="step === 0")
-    .w-full.bg-yellow-500.pl-8.py-4.rounded-xl.text-white.mb-4(v-if="basketWeight < 5")
-      .text-xl.font-semibold 5kg ve üzeri KARGO BEDAVA!
-      span Sepetinize {{ 5 - basketWeight}}kg daha ürün ekleyerek kargo bedava kampanyasından faydalanabilirsiniz.
+    .w-full.bg-yellow-500.pl-8.py-4.rounded-xl.text-white.mb-4(v-if="basketWeight < KARGO_FREE_MIN_WEIGHT")
+      .text-xl.font-semibold {{KARGO_FREE_MIN_WEIGHT}}kg ve üzeri KARGO BEDAVA!
+      span Sepetinize {{ KARGO_FREE_MIN_WEIGHT - basketWeight}}kg daha ürün ekleyerek kargo bedava kampanyasından faydalanabilirsiniz.
     b.text-2xl.ml-4 Sepetteki Ürünler ({{basket.length}})
     .my-8.flex.flex-wrap.justify-start.flex-row
       product-card.mr-2.mb-2(
@@ -69,6 +69,7 @@ div(class="md:p-0 px-4")
 
 <script>
 import { mapGetters, mapState } from "vuex";
+import { KARGO_FREE_MIN_WEIGHT } from "../utils/constants"
 export default {
   name: "basket",
   computed: {
@@ -77,6 +78,7 @@ export default {
   },
   data() {
     return {
+      KARGO_FREE_MIN_WEIGHT,
       name: "",
       address: "",
       phone: "",
