@@ -6,6 +6,7 @@
       b {{ basketTotal + 'TL' }}
   button.basket-fixed__basket-icon(@click="$router.push('/basket')")
     shopping-card-icon
+    span Sepete Git
 </template>
 
 <script>
@@ -27,5 +28,5 @@ export default {
   &__content
     @apply flex flex-col
   &__basket-icon
-    @apply bg-green-500 p-2 rounded-xl text-white cursor-pointer
+    @apply bg-green-500 px-4 py-3 rounded-xl text-white cursor-pointer flex gap-x-4 items-center justify-start font-semibold
 </style>
