@@ -50,10 +50,9 @@ div(class="md:p-0 px-4")
       ) Sipariş Oluştur
   div(v-else-if="step === 2")
     .bg-green-600.text-white.rounded-xl.pl-8.py-4
-      div {{ name }}, siparişin oluşturuldu!
-      .mt-4 Aşağıdaki iban numaralarına toplam sipariş tutarını {{ '(' + basketTotal + 'TL)' }} eft/havale ile gönderdiğinizde siparişiniz kargoya verilecektir.
+      div {{ lastOrder.name }}, siparişin oluşturuldu!
+      .mt-4 Aşağıdaki iban numaralarına toplam sipariş tutarını {{ '(' + lastOrder.totalPrice + 'TL)' }} eft/havale ile gönderdiğinizde siparişiniz kargoya verilecektir.
       b Ödemenin açıklama kısmında ad, soyad belirtmeyi unutmayın!
-    span {{basketTotal}}
     .flex.flex-row.justify-center.flex-wrap.mt-8
       .m-8.flex.justify-center.flex-col.items-center.text-center
         img.w-16(src="~/assets/images/bank_kt.png")
@@ -73,7 +72,7 @@ import { KARGO_FREE_MIN_WEIGHT } from "../utils/constants"
 export default {
   name: "basket",
   computed: {
-    ...mapState(["basket"]),
+    ...mapState(["basket", "lastOrder"]),
     ...mapGetters(["basketTotal", "basketWeight"]),
   },
   data() {

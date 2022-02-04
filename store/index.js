@@ -13,7 +13,11 @@ export const state = {
   products: [],
   basket: [],
   others: [],
-  banners: []
+  banners: [],
+  lastOrder: {
+    name: '',
+    totalPrice: 0
+  }
 }
 
 export const mutations = {
@@ -67,6 +71,9 @@ export const mutations = {
   },
   setBanners(state, val) {
     state.banners = val
+  },
+  setLastOrder(state, val) {
+    state.lastOrder = val
   }
 }
 
@@ -77,7 +84,7 @@ export const actions = {
       'fields.itemType.sys.id': '2rz89q2OKAbk8Nzege9TYd'
     })
       .then((response) => {
-        const products = response.items.map(el => el.fields)
+        const products = response.items.map(el => el.fields).filter(el => !!el.price && !!el.name && !!el.weight)
         commit('setProducts', products)
       })
       .catch(console.error)
@@ -106,6 +113,10 @@ export const actions = {
     ).then(async () => {
       const totalPriceText = 'Toplam: ' + totalPrice + 'TL'
       await dispatch('orderNotification', { message: totalPriceText })
+      commit('setLastOrder', {
+        name,
+        totalPrice
+      })
       commit('resetBasket')
     })
   },
