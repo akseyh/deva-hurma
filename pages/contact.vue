@@ -38,11 +38,6 @@ div(class="md:p-0 px-4")
         b Kuveyt Türk
         span.text-gray-600 SADIK YILMAZ
         span IBAN: TR36 0020 5000 0011 0124 5000 02
-      .m-8.flex.justify-center.flex-col.items-center.text-center
-        img.w-16(src="~/assets/images/bank_tf.png")
-        b Türkiye Finans
-        span.text-gray-600 SADIK YILMAZ
-        span IBAN: TR17 0020 6000 0400 5343 0600 02
 </template>
 
 <script>
@@ -56,7 +51,7 @@ export default {
     EmailIcon,
     FacebookIcon,
     InstagramIcon,
-    WhatsappIcon,
-  },
+    WhatsappIcon
+  }
 };
 </script>
