@@ -10,7 +10,7 @@
 
 <style lang="sass" scoped>
 .footer-section
-  @apply h-72 bg-gray-200 px-8 py-12 flex flex-col justify-start md:px-16
+  @apply h-72 bg-gray-200 px-8 py-12 flex flex-col justify-start md_px-16
   &__image
     @apply w-52
   &__contact

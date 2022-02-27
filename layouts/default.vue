@@ -25,7 +25,7 @@ export default {
   &__header
     @apply mt-4
   &__app-container
-    @apply w-full md:w-3/4 mx-auto mt-8
+    @apply w-full md_w-3/4 mx-auto mt-8
   &__app
     @apply mt-4
     min-height: 600px

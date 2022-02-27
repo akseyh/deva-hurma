@@ -1,5 +1,5 @@
 <template lang='pug'>
-div(class="md:p-0 px-4")
+.md_p-0.px-4
   welcome-board
   .banner-area(v-if="!!banners.length")
     img.banner-area__image(
@@ -38,7 +38,7 @@ export default {
 
 <style lang="sass" scoped>
 .banner-area
-  @apply flex flex-row w-full mt-4 justify-between gap-x-4 md:flex-nowrap flex-wrap overflow-x-scroll
+  @apply flex flex-row w-full mt-4 justify-between gap-x-4 md_flex-nowrap flex-wrap overflow-x-scroll
   &__image
-    @apply cursor-pointer w-full md:w-1/2
+    @apply cursor-pointer w-full md_w-1/2
 </style>

@@ -8,8 +8,7 @@
       NuxtLink.header-menu__link(to="/others") Diğer Ürünler
       NuxtLink.header-menu__link(to="/contact") İletişim
     .header-menu__hamburger
-      button#menuBtn.hamburger.block(
-        class="md:hidden focus:outline-none",
+      button#menuBtn.hamburger.block.md_hidden.focus_outline-none(
         :class="{ open: isMenuOpen }",
         type="button",
         @click="isMenuOpen = !isMenuOpen"
@@ -54,25 +53,25 @@ export default {
 .header-menu
   @apply w-full flex items-center justify-between flex-wrap justify-center
   &__left
-    @apply flex md:w-auto w-full justify-between
+    @apply flex md_w-auto w-full justify-between
   &__right
-    @apply flex space-x-8 justify-around w-full md:w-auto
+    @apply flex space-x-8 justify-around w-full md_w-auto
   &__logo
-    @apply h-12 sm:h-20
+    @apply h-12 sm_h-20
   &__links
-    @apply hidden md:flex flex-grow items-center px-4 space-x-8 justify-end
+    @apply hidden md_flex flex-grow items-center px-4 space-x-8 justify-end
   &__link
-    @apply font-bold cursor-pointer transition hover:text-green-600 border-b border-white hover:border-green-600
+    @apply font-bold cursor-pointer transition hover_text-green-600 border-b border-white hover_border-green-600
   &__basket-title
-    @apply flex flex-row w-32 items-center justify-center p-2 space-x-4 bg-green-500 hover:bg-green-600 transition rounded-xl text-white cursor-pointer w-max min-w-max
+    @apply flex flex-row w-32 items-center justify-center p-2 space-x-4 bg-green-500 hover_bg-green-600 transition rounded-xl text-white cursor-pointer w-max min-w-max
   &__hamburger
-    @apply block md:hidden px-4 justify-end
+    @apply block md_hidden px-4 justify-end
     &-links
       @apply hidden
     &-links.open
-      @apply flex md:hidden w-full h-auto flex-col bg-gray-200 p-4 justify-between mb-4
+      @apply flex md_hidden w-full h-auto flex-col bg-gray-200 p-4 justify-between mb-4
       .hamburger-link
-        @apply hover:text-green-600 hover:bg-gray-300 p-2 transition duration-200
+        @apply hover_text-green-600 hover_bg-gray-300 p-2 transition duration-200
 
 /* HAMBURGER MENU */
 

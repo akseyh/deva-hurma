@@ -24,7 +24,7 @@
         @click="$store.commit('addToBasket', { name: product.name, price: product.price, discount: product.discountPrice, imageLink })"
       ) +
     .flex.justify-between.w-full.bg-red-500.text-sm.py-2.rounded-xl.text-white
-      button(class="focus:outline-none", @click="$store.commit('removeFromBasket', product.name)").w-full Sepetten Çıkar
+      button.focus_outline-none(@click="$store.commit('removeFromBasket', product.name)").w-full Sepetten Çıkar
 </template>
 
 <script>
@@ -72,7 +72,7 @@ export default {
       @apply hidden
   &__add-button
     border: 1px solid gray
-    @apply w-full rounded-xl p-2 text-gray-400 hover:text-green-600 transition
+    @apply w-full rounded-xl p-2 text-gray-400 hover_text-green-600 transition
   &__add-button:hover
     border: 1px solid green
 </style>

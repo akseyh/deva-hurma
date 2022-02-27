@@ -1,6 +1,6 @@
 <template lang="pug">
-div(class="md:p-0 px-4")
-  .text-2xl.font-bold.mb-8(class="md:text-4xl") Sepetiniz
+div.md_p-0.px-4
+  .text-2xl.font-bold.mb-8.md_text-4xl Sepetiniz
   .w-full.bg-red-500.pl-8.py-4.rounded-xl.text-white.mb-96(
     v-if="!basket.length && step !== 2"
   )
