@@ -44,6 +44,10 @@
         img(src="../assets/hurma/berhi.jpeg" alt="Berhi" width="500")
         .text-2xl.font-semibold Berhi Yaş Hurma
         span Berhi Hurma; çağla olarak da bilinen, erik kıvamında, yumuşak yapılı, orta büyüklükte, sarı renkte, ince kabuklu, kekremsi-tatlı tada sahip yaş hurma çeşididir. Bekledikçe daha çok olgunlaşmakta ve tatlılaşmaktadır. Hamile ve emzikli bayanlara tavsiye edilen yaş hurma çeşitlerindendir. Filistin bölgesinde yetiştirilmektedir.
+      .flex.flex-col
+        img(src="../assets/hurma/amber.jpeg" alt="Amber" width="500")
+        .text-2xl.font-semibold Medine Amber
+        span Amber Hurma; siyah renkli, oldukça iri bir çeşittir. Lif oranı yüksek, ince etli, diri yapılı ve hoş bir tada sahiptir. Özellikle diyet yapanlara, tok tutması ve besleyiciliği açısından önerilir. Medine'de, Riyad'da ve Necid bölgesinde yetiştirilmektedir.
     i.text-2xl.mt-2
       | Her Derde
       b &nbspDeva Hurma
