@@ -1,13 +1,6 @@
-import { lowerCase } from '../utils/validations'
 const axios = require('axios')
 
-const contentful = require('contentful')
-
-const client = contentful.createClient({
-  space: process.env.contentSpace,
-  accessToken: process.env.contentAccessToken,
-  host: 'preview.contentful.com'
-})
+import { lowerCase } from '../utils/validations'
 
 export const state = {
   products: [],
@@ -78,16 +71,15 @@ export const mutations = {
 }
 
 export const actions = {
-  fetchProducts({ commit }) {
-    return client.getEntries({
-      content_type: 'item',
-      'fields.itemType.sys.id': '2rz89q2OKAbk8Nzege9TYd'
-    })
-      .then((response) => {
-        const products = response.items.map(el => el.fields).filter(el => !!el.price && !!el.name && !!el.weight)
-        commit('setProducts', products)
-      })
-      .catch(console.error)
+  async fetchProducts({ commit }) {
+    try {
+      const response = await axios.get('/.netlify/functions/items')
+      const products = response.data.items.map(el => el.fields).filter(el => !!el.price && !!el.name && !!el.weight)
+      commit('setProducts', products)
+    } catch (err) {
+      console.error(err)
+      commit('setProducts', [])
+    }
   },
   async makeOrder({ state, commit, dispatch }, { name, address, phone }) {
     let totalPrice = 0
@@ -121,7 +113,7 @@ export const actions = {
     })
   },
   orderNotification({ }, { message }) {
-    const path = ('https://api.telegram.org/' + process.env.telegramAPIToken + '/sendMessage?chat_id=' + process.env.telegramChatId + '&parse_mode=Markdown&text=' + message).trim()
+    const path = ('https://api.telegram.org/' + process.env.TELEGRAM_API_TOKEN + '/sendMessage?chat_id=' + process.env.TELEGRAM_CHAT_ID + '&parse_mode=Markdown&text=' + message).trim()
     return axios.post(path)
       .then(resp => {
         console.log(resp)
@@ -130,26 +122,25 @@ export const actions = {
         console.log(err)
       })
   },
-  fetchOthers({ commit }) {
-    return client.getEntries({
-      content_type: 'item',
-      'fields.itemType.sys.id': '1Ldo7WaDJEAXWEzOERokyN'
-    })
-      .then((response) => {
-        const products = response.items.map(el => el.fields)
-        commit('setOthers', products)
-      })
-      .catch(console.error)
+  async fetchOthers({ commit }) {
+    try {
+      const response = await axios.get('/.netlify/functions/others')
+      const products = response.data.items.map(el => el.fields)
+      commit('setOthers', products)
+    } catch (error) {
+      console.error(error)
+      commit('setOthers', [])
+    }
   },
-  fetchBanners({ commit }) {
-    return client.getEntries({
-      content_type: 'banners'
-    })
-      .then(response => {
-        const banners = response.items.map(el => el.fields)
-        commit('setBanners', banners)
-      })
-      .catch(console.error)
+  async fetchBanners({ commit }) {
+    try {
+      const response = await axios.get('.netlify/functions/banners')
+      const banners = response.data.items.map(el => el.fields)
+      commit('setBanners', banners)
+    } catch (error) {
+      console.error(error)
+      commit('setBanners', [])
+    }
   }
 }
 
