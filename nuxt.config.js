@@ -3,10 +3,10 @@ export default {
   ssr: false,
 
   env: {
-    telegramAPIToken: process.env.TELEGRAM_API_TOKEN,
-    telegramChatId: process.env.TELEGRAM_CHAT_ID,
-    contentSpace: process.env.CONTENT_SPACE,
-    contentAccessToken: process.env.CONTENT_ACCESS_TOKEN
+    TELEGRAM_API_TOKEN: process.env.TELEGRAM_API_TOKEN,
+    TELEGRAM_CHAT_ID: process.env.TELEGRAM_CHAT_ID,
+    CONTENT_SPACE: process.env.CONTENT_SPACE,
+    CONTENT_ACCESS_TOKEN: process.env.CONTENT_ACCESS_TOKEN
   },
 
   // Target: https://go.nuxtjs.dev/config-target
@@ -34,6 +34,7 @@ export default {
 
   // Plugins to run before rendering page: https://go.nuxtjs.dev/config-plugins
   plugins: [
+    "./plugins/contentful"
   ],
 
   // Auto import components: https://go.nuxtjs.dev/config-components
