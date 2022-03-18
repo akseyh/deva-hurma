@@ -44,6 +44,7 @@ export default {
   buildModules: [
     // https://go.nuxtjs.dev/tailwindcss
     '@nuxtjs/tailwindcss',
+    '@nuxtjs/google-analytics'
   ],
 
   // Modules: https://go.nuxtjs.dev/config-modules
@@ -51,6 +52,10 @@ export default {
 
   'google-adsense': {
     id: 'ca-pub-3163060674124699'
+  },
+
+  googleAnalytics: {
+    id: 'G-BQTD2GLRPM'
   },
 
   // Build Configuration: https://go.nuxtjs.dev/config-build
