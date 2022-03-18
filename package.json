@@ -12,6 +12,7 @@
     "@jamescoyle/vue-icon": "^0.1.0",
     "@mdi/font": "^5.9.55",
     "@mdi/js": "^5.9.55",
+    "@nuxtjs/google-adsense": "^2.0.0",
     "axios": "^0.21.1",
     "contentful": "^8.2.0",
     "core-js": "^3.9.1",
