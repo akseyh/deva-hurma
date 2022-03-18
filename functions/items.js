@@ -1,4 +1,4 @@
-import client from "../plugins/contentful"
+import client from "../plugins/shopify"
 
 export async function handler(event, context, callback) {
   // CORS
@@ -20,10 +20,7 @@ export async function handler(event, context, callback) {
   }
 
   try {
-    const response = await client.getEntries({
-      content_type: 'item',
-      'fields.itemType.sys.id': '2rz89q2OKAbk8Nzege9TYd'
-    })
+    const response = await client.product.fetchAll()
 
     return callback(null, {
       statusCode: 200,
