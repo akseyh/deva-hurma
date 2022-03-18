@@ -34,7 +34,7 @@ div.md_p-0.px-4
         span.text-gray-600 sadikyilmaz@devahurma.com
     .flex.flex-row.justify-center.flex-wrap.mt-8
       .m-8.flex.justify-center.flex-col.items-center.text-center
-        img.w-16(src="~/assets/images/bank_kt.png")
+        img.w-16(src="/images/bank_kt.png")
         b Kuveyt Türk
         span.text-gray-600 SADIK YILMAZ
         span IBAN: TR36 0020 5000 0011 0124 5000 02

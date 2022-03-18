@@ -5,47 +5,47 @@
     iframe(width="100%" height="500" src="https://www.youtube.com/embed/cOI1jkgXYWs" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen)
     .flex.flex-col.gap-y-4.my-12
       .flex.flex-col
-        img(src="../assets/hurma/mesruk.jpeg" alt="Meşruk" width="500")
+        img(src="/hurma/mesruk.jpeg" alt="Meşruk" width="500")
         .text-2xl.font-semibold Meşruk
         span Meşruk Duble hurma; kahverengi-kırmızı renkli, orta büyüklüktedir. Mebrum cinsi ile aynı ağaçta yetişir. Nispeten kabuklu ve damarlı olanların seçilmesiyle elde edilir. Tatlılığı yoğun, lezzetli ve besleyici bir hurma çeşididir. Berni ailesinden olup mebruma yakın lezzete sahiptir. Al-Ula bölgesinde yetiştirilmektedir. Duble çeşidi iri taneler seçilerek elde edilir.
       .flex.flex-col
-        img(src="../assets/hurma/hudri.jpeg" alt="Hudri" width="500")
+        img(src="/hurma/hudri.jpeg" alt="Hudri" width="500")
         .text-2xl.font-semibold Hudri
         span Hudri Hurma; koyu kahverenginde, orta büyüklükte, ne çok sert, ne çok yumuşak olarak orta kıvamda, etli, nispeten iri ve lif oranı yüksek bir çeşittir. Lezzeti belirgin ve güzel, tatlılık oranı yoğundur. Türk damak tadına hitap eden aroması oldukça beğenilmektedir. Riyad ve Qasim bölgelerinde yetiştirilmektedir.
       .flex.flex-col
-        img(src="../assets/hurma/safavi.jpeg" alt="Safavi" width="500")
+        img(src="/hurma/safavi.jpeg" alt="Safavi" width="500")
         .text-2xl.font-semibold Safavi Medine
         span Safavi Hurma; siyah renkli, orta büyüklükte ve ince kabukludur. Şeker oranı nispeten düşük, besin değerleri bakımından zengin bir çeşittir. Medine bölgesinde yerel halk tarafından çokça tüketilir. Medine karası veya Meryem hurması olarak da bilinir. Medine ve çevresinde yetiştirilmektedir.
       .flex.flex-col
-        img(src="../assets/hurma/sugai.jpeg" alt="Sugai" width="500")
+        img(src="/hurma/sugai.jpeg" alt="Sugai" width="500")
         .text-2xl.font-semibold Sugay Hurma
         span Sugay Hurma; gövdesi kahverengi, şekeri uç kısımlarına toplanmasından dolayı uç kısımları sarı-beyaz renkli bir hurmadır. Kalın etli, ince kabuklu, lif oranı yüksektir. Şeker oranının düşük olması nedeniyle şeker hastalarının tercih ettiği bir çeşittir. Tahin ile birlikte tüketilebilir. Arap halkı yerel kahvesi ile birlikte tüketir. Riyad, Qasim, Al-Kharj bölgelerinde yetiştirilir.
       .flex.flex-col
-        img(src="../assets/hurma/berni.jpeg" alt="Berni" width="500")
+        img(src="/hurma/berni.jpeg" alt="Berni" width="500")
         .text-2xl.font-semibold Berni Medine
         span Berni Hurma; sarımsı renkte, orta büyüklükte bir çeşittir. Lif oranı oldukça yüksektir. Çocuklara ve hamilelik ve emzirme dönemindeki bayanlara tavsiye edilmektedir. Efendimizin (ASM) "hurma çeşitlerinden en hayırlısı bernidir" buyurduğu rivayet edilmektedir. Medine ve çevresinde yetiştirilmektedir.
       .flex.flex-col
-        img(src="../assets/hurma/mebrum.jpeg" alt="Mebrum" width="500")
+        img(src="/hurma/mebrum.jpeg" alt="Mebrum" width="500")
         .text-2xl.font-semibold Mebrum
         span Mebrum Medine Hurması; hurma denince akla gelen, Berni ailesinden kahverengi-kırmızı renge sahip, ince kabuklu, besleyici bir çeşittir. Özgün bir aroması vardır. Diri ve dayanıklı bir yapıya sahiptir. Hac ve Umre ziyaretlerinde ikram edilmek üzere en çok tercih edilen cinstir. Bu hurma Türk insanının damak tadına hitap eden ve ülkemiz insanları tarafından en çok rağbet gören türdür. Medine hurması olarak bilinen bu çeşit Al Ula Bölgesinde yetişir.
       .flex.flex-col
-        img(src="../assets/hurma/medjul.jpeg" alt="Medjul" width="500")
+        img(src="/hurma/medjul.jpeg" alt="Medjul" width="500")
         .text-2xl.font-semibold Medine Medjul
         span Medine Medjoul DUBLE Hurma; koyu kahverenginde, iri boyutlu, oldukça kalın etli, yumuşak ve seçkin lezzete sahip medjul cinsi hurmadır. Kudüs hurması olarak bilinen iri hurma çeşidine büyüklük olarak benzerlik gösterir. Lezzet açısından kendi özgü özel bir aromaya sahiptir. Medine, Qasim ve Riyad bölgelerinde yetiştirilmektedir.
       .flex.flex-col
-        img(src="../assets/hurma/acve.jpeg" alt="Acve" width="500")
+        img(src="/hurma/acve.jpeg" alt="Acve" width="500")
         .text-2xl.font-semibold Acve
         span Acve Hurma; siyah renkli, nisbeten ufak taneli, diğer hurmalardan farklı olarak yuvarlak şekillidir. Diğer hurma çeşitlerinden farklı, özgün bir lezzete ve aromaya sahiptir. Halk arasında Peygamber Hurması olarak bilinen, yanmış hurma dalının yeşermesi mucizesine konu olmuş çok özel bir çeşittir. Medine bölgesinde yetiştirilmektedir.
       .flex.flex-col
-        img(src="../assets/hurma/sukkeri.jpeg" alt="Sukkeri" width="500")
+        img(src="/hurma/sukkeri.jpeg" alt="Sukkeri" width="500")
         .text-2xl.font-semibold Sukkari Yaş Hurma
         span Sukkari Yaş-Taze Hurma; anlamı şeker demek olan ve şeker oranı diğerlerine nazaran daha yüksek olan hurma çeşididir. Açık kahve renginde, orta büyüklükte, ince kabuklu ve yumuşak yapıdadır. Enfes bir aromaya sahiptir. Özellikle kuru ve sert olan hurmaları yiyemeyenler için tavsiye edilir. Çay ve kahve yanında tüketimi yaygındır. Tahin ile birlikte de tüketilebilir. Qasim bölgesinde yetiştirilmektedir.
       .flex.flex-col
-        img(src="../assets/hurma/berhi.jpeg" alt="Berhi" width="500")
+        img(src="/hurma/berhi.jpeg" alt="Berhi" width="500")
         .text-2xl.font-semibold Berhi Yaş Hurma
         span Berhi Hurma; çağla olarak da bilinen, erik kıvamında, yumuşak yapılı, orta büyüklükte, sarı renkte, ince kabuklu, kekremsi-tatlı tada sahip yaş hurma çeşididir. Bekledikçe daha çok olgunlaşmakta ve tatlılaşmaktadır. Hamile ve emzikli bayanlara tavsiye edilen yaş hurma çeşitlerindendir. Filistin bölgesinde yetiştirilmektedir.
       .flex.flex-col
-        img(src="../assets/hurma/amber.jpeg" alt="Amber" width="500")
+        img(src="/hurma/amber.jpeg" alt="Amber" width="500")
         .text-2xl.font-semibold Medine Amber
         span Amber Hurma; siyah renkli, oldukça iri bir çeşittir. Lif oranı yüksek, ince etli, diri yapılı ve hoş bir tada sahiptir. Özellikle diyet yapanlara, tok tutması ve besleyiciliği açısından önerilir. Medine'de, Riyad'da ve Necid bölgesinde yetiştirilmektedir.
     i.text-2xl.mt-2

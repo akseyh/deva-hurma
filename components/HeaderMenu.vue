@@ -1,7 +1,7 @@
 <template lang="pug">
 .header-menu
   .header-menu__left
-    img.header-menu__logo(src="~/assets/images/logo.png", @click="$router.push('/')")
+    img.header-menu__logo(src="/images/logo.png", @click="$router.push('/')")
     .header-menu__links
       NuxtLink.header-menu__link(to="/") Anasayfa
       NuxtLink.header-menu__link(to="/products") Hurma
