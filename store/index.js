@@ -71,15 +71,18 @@ export const mutations = {
 }
 
 export const actions = {
-  async fetchProducts({ commit }) {
-    try {
-      const response = await axios.get('/.netlify/functions/items')
-      const products = response.data.items.map(el => el.fields).filter(el => !!el.price && !!el.name && !!el.weight)
-      commit('setProducts', products)
-    } catch (err) {
-      console.error(err)
-      commit('setProducts', [])
-    }
+  fetchProducts({ commit }) {
+    return new Promise(async (resolve, reject) => {
+      try {
+        const response = await axios.get('/.netlify/functions/items')
+        const products = response.data.items.map(el => el.fields).filter(el => !!el.price && !!el.name && !!el.weight)
+        commit('setProducts', products)
+        resolve(products)
+      } catch (err) {
+        commit('setProducts', [])
+        reject(err)
+      }
+    })
   },
   async makeOrder({ state, commit, dispatch }, { name, address, phone }) {
     let totalPrice = 0

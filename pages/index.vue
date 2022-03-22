@@ -10,7 +10,9 @@
     )
   .flex.flex-col.mt-12
     .text-4xl.font-bold.text-center Tüm Hurma Çeşitleri
-    .flex.flex-wrap.mt-4.justify-center.gap-2
+    .flex.flex-wrap.mt-4.justify-center.gap-2(v-if="$fetchState.pending")
+      spinner
+    .flex.flex-wrap.mt-4.justify-center.gap-2(v-else)
       product-card(
         v-for="(product, index) in products",
         :key="product.id",
@@ -30,9 +32,11 @@ export default {
   computed: {
     ...mapState(["products", "banners"])
   },
-  async created() {
-    await this.$store.dispatch("fetchProducts");
-  },
+  async fetch() {
+    const { store } = this.$nuxt.context
+
+    await store.dispatch("fetchProducts");
+  }
 };
 </script>
 
