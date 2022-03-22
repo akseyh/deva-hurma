@@ -1,15 +1,15 @@
 <template lang='pug'>
 .md_p-0.px-4
-  welcome-board
+  welcome-board(@scrollDown="scrollDown")
   .banner-area(v-if="!!banners.length")
     img.banner-area__image(
       v-for="(banner, idx) in banners"
       :key="idx"
       :src="banner.image.fields.file.url",
-      @click="$router.push('/contact')"
+      @click="scrollDown"
     )
   .flex.flex-col.mt-12
-    .text-4xl.font-bold.text-center Tüm Hurma Çeşitleri
+    .text-4xl.font-bold.text-center#hurma-container Tüm Hurma Çeşitleri
     .flex.flex-wrap.mt-4.justify-center.gap-2(v-if="$fetchState.pending")
       spinner
     .flex.flex-wrap.mt-4.justify-center.gap-2(v-else)
@@ -36,6 +36,12 @@ export default {
     const { store } = this.$nuxt.context
 
     await store.dispatch("fetchProducts");
+  },
+  methods: {
+    scrollDown() {
+      var container = this.$el.querySelector('#hurma-container')
+      container.scrollIntoView({behavior: 'smooth'})
+    }
   }
 };
 </script>
