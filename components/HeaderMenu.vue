@@ -21,11 +21,6 @@
     NuxtLink.hamburger-link(to="/others") Diğer Ürünler
     NuxtLink.hamburger-link(to="/contact") İletişim
   .header-menu__right
-    .header-menu__contact
-      b.text-base Sadık Yılmaz
-      b.flex.items-center.space-x-2
-        PhoneIcon.w-4.text-green-500
-        span.text-sm 0(533) 487 26 73
     .header-menu__basket-title(@click="$router.push('/basket')")
       ShoppingCardIcon.w-4
       span Sepet
@@ -63,7 +58,7 @@ export default {
   &__link
     @apply font-bold cursor-pointer transition hover_text-green-600 border-b border-white hover_border-green-600
   &__basket-title
-    @apply flex flex-row w-32 items-center justify-center p-2 space-x-4 bg-green-500 hover_bg-green-600 transition rounded-xl text-white cursor-pointer w-max min-w-max
+    @apply flex flex-row w-32 items-center justify-center px-4 py-3 space-x-4 bg-green-500 hover_bg-green-600 transition rounded-xl text-white cursor-pointer w-max min-w-max
   &__hamburger
     @apply block md_hidden px-4 justify-end
     &-links
