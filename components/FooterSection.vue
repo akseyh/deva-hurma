@@ -5,7 +5,7 @@
       .footer-container__about-title
         | Hakkımızda
       .footer-container__about-text
-        | Deva Hurma, genelde Suudi Arabistan, özelde Medine-i Münevvere hurma bahçelerinden %100 doğal lezzetli şifa kaynağı hurmaları sofralarınıza kadar ulaştırıyor.
+        | Deva Hurma, genelde Suudi Arabistan, özelde Medine-i Münevvere hurma bahçelerinden %100 doğal, lezzetli ve şifa kaynağı hurmaları sofralarınıza kadar ulaştırıyor. Ülkemizde hurma sadece ramazan ayına mahsus bir gıda olarak algılanmaktadır. Halbuki yılın 365 günü insanın ihtiyacı olan bir meyvedir.
     .footer-container__links
       .footer-container__links-title
         | Linkler
