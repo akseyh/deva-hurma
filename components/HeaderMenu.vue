@@ -42,7 +42,7 @@ export default {
 
 <style lang="sass" scoped>
 .header-menu
-  @apply w-full h-full flex items-center flex-wrap justify-center
+  @apply w-full h-full flex items-center flex-wrap justify-between
   &__left
     @apply flex md_w-auto w-full justify-between
   &__right
