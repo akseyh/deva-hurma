@@ -20,10 +20,6 @@
     NuxtLink.hamburger-link(to="/products") Hurma
     NuxtLink.hamburger-link(to="/others") Diğer Ürünler
     NuxtLink.hamburger-link(to="/contact") İletişim
-  .header-menu__right
-    .header-menu__basket-title(@click="$router.push('/basket')")
-      ShoppingCardIcon.w-4
-      span Sepet
 </template>
 
 <script>
