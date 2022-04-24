@@ -42,21 +42,19 @@ export default {
 
 <style lang="sass" scoped>
 .header-menu
-  @apply w-full flex items-center justify-between flex-wrap justify-center
+  @apply w-full h-full flex items-center flex-wrap justify-center
   &__left
     @apply flex md_w-auto w-full justify-between
   &__right
     @apply flex space-x-8 justify-around w-full md_w-auto
   &__logo
-    @apply h-12 sm_h-20
+    @apply h-20
   &__links
     @apply hidden md_flex flex-grow items-center px-4 space-x-8 justify-end
   &__link
     @apply font-bold cursor-pointer transition hover_text-green-600 border-b border-white hover_border-green-600
-  &__basket-title
-    @apply flex flex-row w-32 items-center justify-center px-4 py-3 space-x-4 bg-green-500 hover_bg-green-600 transition rounded-xl text-white cursor-pointer w-max min-w-max
   &__hamburger
-    @apply block md_hidden px-4 justify-end
+    @apply block md_hidden px-4 justify-end flex items-center justify-center
     &-links
       @apply hidden
     &-links.open
